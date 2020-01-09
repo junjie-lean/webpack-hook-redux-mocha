@@ -2,14 +2,15 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 15:41:40
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-08 14:32:47
+ * @Last Modified time: 2020-01-09 11:00:07
  */
 
 /**
  * webpack dev server config  list.
  */
 const path = require("path");
-
+const openBrowser = require("react-dev-utils/openBrowser");
+const clearConsole = require("react-dev-utils/clearConsole");
 module.exports.setDevServer = function(defaultConfig = {}) {
   let devConfig = {
     ...defaultConfig,
@@ -28,16 +29,24 @@ module.exports.setDevServer = function(defaultConfig = {}) {
     overlay: false,
     compress: true, //gzip
     host: "0.0.0.0",
-    // stats: defaultConfig.stats,
+    stats: defaultConfig.stats,
     index: "index.html",
-    // clientLogLevel: "none",
+    clientLogLevel: "none",
     historyApiFallback: {
       disableDotRule: true
     },
-    open: true,
-    openPage: `http://localhost:${require("./../package").port}`,
+    open: false,
     after: () => {
-      console.log("Server start up by Webpack-dev-server");
+      setTimeout(() => {
+        let url = `http://localhost:${require("./../package").port}`;
+        clearConsole();
+        console.log(
+          `Server start up @\`http://localhost:${
+            require("./../package").port
+          }\``
+        );
+        openBrowser(url);
+      }, 0);
     }
   };
 

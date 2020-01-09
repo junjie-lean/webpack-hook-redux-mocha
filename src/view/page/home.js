@@ -12,7 +12,7 @@ function Home(props) {
   } = useSelector(state => state);
 
   const dispatch = useDispatch();
-
+  console.log(props);
   return (
     <div className="screenshot-zone">
       <br />
@@ -27,7 +27,7 @@ function Home(props) {
           // dispatch({type:"test"})
         }}
       >
-        Action1
+        ac
       </Button>
       <br />
       <br />

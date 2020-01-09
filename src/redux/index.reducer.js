@@ -8,13 +8,14 @@ const getAsyncData = () => {
   });
 };
 
-export const test_ac = async () => {
-  let data = await getAsyncData();
-  return dispatch =>
+export const test_ac = () => {
+  return async dispatch => {
+    let data = await getAsyncData();
     dispatch({
       type: "test",
       data
     });
+  };
 };
 
 const test_reducer = (state, action) => {
