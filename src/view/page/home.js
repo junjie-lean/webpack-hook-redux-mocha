@@ -26,11 +26,13 @@ function Home(props) {
 
   useEffect(() => {
     if (isEnter) {
-      // console.log("is enter press");
+      console.log("is enter press");
       let arr = inputValList;
-      if (inputVal !== "") {
-        arr.push(inputVal);
-      }
+      arr.push(inputVal);
+
+      // if (inputVal !== "") {
+      //   arr.push(inputVal);
+      // }
       setInputValList(arr);
       setInputVal("");
     }
@@ -49,29 +51,28 @@ function Home(props) {
       <Button
         type="primary"
         onClick={() => {
-          props.test_ac();
+          props.test_ac("test");
           // dispatch({type:"test"})
         }}
       >
-        ac
+        async action1
       </Button>
       <br />
       <br />
       <br />
-
       <Button
+        type="primary"
         onClick={() => {
-          history.push("/loading");
+          props.test_ac("default");
+          // dispatch({type:"test"})
         }}
       >
-        BACK
+        async action2
       </Button>
+      <br />
       <hr />
       <br />
-      <Event />
-      <br />
-      <br />
-      <Input onChange={inputChange} value={inputVal} />
+      <Input size={"large"} onChange={inputChange} value={inputVal} />
       <br />
       <div>
         {inputValList.map((item, index) => {

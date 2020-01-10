@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 
+//模拟ajax请求
 const getAsyncData = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -8,11 +9,11 @@ const getAsyncData = () => {
   });
 };
 
-export const test_ac = () => {
+export const test_ac = act => {
   return async dispatch => {
     let data = await getAsyncData();
     dispatch({
-      type: "test",
+      type: act,
       data
     });
   };
