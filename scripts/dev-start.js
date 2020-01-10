@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-01-10 11:06:12
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-10 11:22:44
+ * @Last Modified time: 2020-01-10 11:27:47
  */
 
 /**
@@ -18,7 +18,7 @@ let startDevServer = cp.spawn(
   "npx",
   ["webpack-dev-server", "--config", "./config/webpack.base.config", "--color"],
   {
-    ...process.env
+    env: { ...process.env }
   }
 );
 

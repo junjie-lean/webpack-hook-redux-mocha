@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "npx cross-env NODE_ENV=production npx webpack  --config ./config/webpack.base.config",
     "debuger": "nodemon  -w ./config/webpack.base.config --exec 'NODE_ENV=development npx webpack-dev-server --config ./config/webpack.base.config' ",
-    "analyze": "ANALYZE_MODE=true npx webpack --config ./config/webpack.base.config --color",
+    "analyze": "npx cross-env ANALYZE_MODE=true node ./scripts/analyze.js",
     "dev": "npx cross-env NODE_ENV=development node ./scripts/dev-start.js"
   },
   "keywords": [

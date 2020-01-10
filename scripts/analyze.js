@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-24 11:02:57
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-12-24 13:35:41
+ * @Last Modified time: 2020-01-10 11:28:15
  */
 
 /**
@@ -21,10 +21,16 @@ let webpackCompile = spawnSync(
     "--profile",
     "--json"
   ],
-  { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 }
+  {
+    encoding: "utf8",
+    maxBuffer: 20 * 1024 * 1024, //20M 
+    env: {
+      ...process.env
+    }
+  }
 );
 
-console.log("webpack compile end!");
+// console.log("webpack compile end!");
 let writeJsonFile = writeFileSync("stats.json", webpackCompile.stdout);
 
 let createAnalyze = spawnSync(
