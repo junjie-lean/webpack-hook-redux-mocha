@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-08 14:14:54
+ * @Last Modified time: 2020-01-09 14:41:51
  */
 
 /**
@@ -16,6 +16,14 @@ const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { paths } = require("./paths");
 
+
+/**
+ * debugLevel 调试等级,输出等级. 0 到 4.
+ * 0不输出sourceMap, 打包速度最快;
+ * 4输出详细sourceMap,打包构建速度最慢;
+ */
+const debugLevel = 1;
+
 /** mode */
 const mode =
   process.env.NODE_ENV !== "production" ? "development" : "production";
@@ -24,12 +32,7 @@ const mode =
 const isOpenAnalyze =
   process.env.ANALYZE_MODE && process.env.ANALYZE_MODE === "true";
 
-/**
- * debugLevel 调试等级,输出等级. 0 到 4.
- * 0不输出sourceMap, 打包速度最快;
- * 4输出详细sourceMap,打包构建速度最慢;
- */
-const debugLevel = 4;
+
 
 function setSourceMapAbout(debugLevel) {
   let stats, devtool;

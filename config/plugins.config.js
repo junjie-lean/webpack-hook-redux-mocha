@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-12-25 09:36:47
+ * @Last Modified time: 2020-01-09 15:45:54
  */
 
 /**
@@ -13,7 +13,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
@@ -57,7 +57,6 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
       template: "public/index.html"
     })
   );
-
   if (mode !== "development") {
     // 混淆编译插件;
     // 对编译有极大的性能9影响,开发模式切勿启用
@@ -80,12 +79,11 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
     //多线程式编译模式
     plugins.push(
       new ParallelUglifyPlugin({
+        sourceMap: debugLevel > 0,
         uglifyJS: {
           output: {
-            comments: false
-          },
-          compress: {
-            warnings: false
+            comments: false,
+            beautify: false
           }
         }
       })

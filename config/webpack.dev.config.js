@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 15:41:40
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-09 11:00:07
+ * @Last Modified time: 2020-01-09 15:48:25
  */
 
 /**
@@ -11,6 +11,7 @@
 const path = require("path");
 const openBrowser = require("react-dev-utils/openBrowser");
 const clearConsole = require("react-dev-utils/clearConsole");
+
 module.exports.setDevServer = function(defaultConfig = {}) {
   let devConfig = {
     ...defaultConfig,

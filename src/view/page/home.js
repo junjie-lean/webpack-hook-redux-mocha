@@ -4,6 +4,9 @@ import "./../../style/index.scss";
 import Event from "./../components/event";
 import { test_ac } from "./../../redux/index.reducer";
 import { connect, useSelector, useDispatch } from "react-redux";
+import { Input } from "antd";
+
+import useKeyPress from "./../../hooks/useKeyPress";
 
 function Home(props) {
   const { history } = props;
@@ -11,8 +14,31 @@ function Home(props) {
     test_reducer: { data }
   } = useSelector(state => state);
 
-  const dispatch = useDispatch();
-  console.log(props);
+  const [inputVal, setInputVal] = useState("");
+  const [inputValList, setInputValList] = useState([]);
+
+  const isEnter = useKeyPress(13);
+  const isEsc = useKeyPress(27);
+
+  const inputChange = ({ target: { value } }) => {
+    setInputVal(value);
+  };
+
+  useEffect(() => {
+    if (isEnter) {
+      // console.log("is enter press");
+      let arr = inputValList;
+      if (inputVal !== "") {
+        arr.push(inputVal);
+      }
+      setInputValList(arr);
+      setInputVal("");
+    }
+    if (isEsc) {
+      setInputVal("");
+    }
+  });
+
   return (
     <div className="screenshot-zone">
       <br />
@@ -43,6 +69,19 @@ function Home(props) {
       <hr />
       <br />
       <Event />
+      <br />
+      <br />
+      <Input onChange={inputChange} value={inputVal} />
+      <br />
+      <div>
+        {inputValList.map((item, index) => {
+          return (
+            <span key={index}>
+              {item} {"       "}
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }

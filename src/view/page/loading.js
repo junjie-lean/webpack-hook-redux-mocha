@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactLoding from "react-loading";
 import { Button } from "antd";
-import { withRouter } from "react-router-dom";
 
 export default function Loading(props) {
   const [change, setChange] = useState(false);

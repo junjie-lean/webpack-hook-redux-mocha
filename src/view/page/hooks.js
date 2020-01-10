@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import Echarts from "./echarts";
 import Event from "./../components/event";
+
+
 export default function Hooks() {
   let [count, setCount] = useState(1);
   let [val, setVal] = useState("");

@@ -2,11 +2,13 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 15:04:22
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-12-24 16:27:16
+ * @Last Modified time: 2020-01-09 15:56:08
  */
 import React from "react";
 import { Button } from "antd";
 import { withRouter } from "react-router-dom";
+
+
 function EventMock(props) {
   const gowith = url => {
     props.history.push(url);
@@ -19,13 +21,6 @@ function EventMock(props) {
         }}
       >
         to home
-      </Button>
-      <Button
-        onClick={() => {
-          gowith("/echarts");
-        }}
-      >
-        to echarts
       </Button>
       <Button
         onClick={() => {

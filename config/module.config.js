@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-12-20 15:29:12
+ * @Last Modified time: 2020-01-09 15:43:31
  */
 
 /**
@@ -37,18 +37,36 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
             {
               // spec: false, //是否启用更为规范的转换
               // debug: false,
-              useBuiltIns: "entry", //入口文件出注入polyfill
-              // useBuiltIns: "usage",
+              // useBuiltIns: "entry", //入口文件出注入polyfill
+              useBuiltIns: "usage", //按需加入polyfill
               targets: {
-                esmodules: true,
-                node: "current"
+                chrome: "58",
+                ie: "10"
               },
               corejs: "3"
             }
           ]
         ],
         plugins: [
-          // ["add-module-exports"],
+          [
+            "import",
+            {
+              libraryName: "antd",
+              libraryDirectory: "es",
+              // style: "css"
+              style: true
+            },
+            "antd"
+          ],
+          [
+            "import",
+            {
+              libraryName: "lodash",
+              libraryDirectory: "",
+              camel2DashComponentName: false
+            },
+            "lodash"
+          ],
           "autobind-class-methods",
           ["@babel/plugin-proposal-class-properties", { loose: false }],
           [
@@ -74,16 +92,6 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
             {
               legacy: true
             }
-          ],
-          [
-            "import",
-            {
-              libraryName: "antd",
-              libraryDirectory: "es",
-              style: "css"
-              // style: true
-            },
-            "ant"
           ]
         ]
       }
@@ -91,7 +99,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
   };
 
   const urlLoader = {
-    test: /\.(png|jqeg|gif)$/,
+    test: /\.(png|jpg|jqeg|gif)$/,
     use: [
       {
         loader: "url-loader",
@@ -125,22 +133,25 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
 
   const lessLoader = {
     test: /\.less$/,
+    // include: [/[\\/]node_modules[\\/].*antd/],
     use: [
+      MiniCssExtractPlugin.loader, // replaces extract text plugin in webpack 4
+      "css-loader",
       {
-        loader: "sass-loader"
-      },
-      {
-        loader: "css-loader"
+        loader: "postcss-loader",
+        options: {
+          config: {
+            path: "./config/postcss.config.js"
+          }
+        }
       },
       {
         loader: "less-loader",
         options: {
-          // lessPlugins: [new LessNpmImportPlugin({ prefix: "~" })],
           javascriptEnabled: true
         }
       }
-    ],
-    include: resolve(__dirname, "..", "src")
+    ]
   };
 
   const happypackLoader = {
@@ -155,7 +166,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
     rawLoader,
     urlLoader,
     babelLoader,
-    happypackLoader,
+    happypackLoader
   );
 
   return { rules };
