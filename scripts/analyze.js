@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-24 11:02:57
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-10 12:49:45
+ * @Last Modified time: 2020-03-09 14:28:56
  */
 
 /**
@@ -23,7 +23,7 @@ let webpackCompile = spawnSync(
   ],
   {
     encoding: "utf8",
-    maxBuffer: 20 * 1024 * 1024, //20M 
+    maxBuffer: 20 * 1024 * 1024, //20M
     env: {
       ...process.env
     }
@@ -31,22 +31,22 @@ let webpackCompile = spawnSync(
 );
 
 // console.log("webpack compile end!");
-let writeJsonFile = writeFileSync("stats.json", webpackCompile.stdout);
+// let writeJsonFile = writeFileSync("stats.json", webpackCompile.stdout);
 
-let createAnalyze = spawnSync(
-  "npx",
-  [
-    "webpack-bundle-analyzer",
-    "stats.json",
-    "build",
-    "-m",
-    "static",
-    "-r",
-    "build/analyze.html",
-    "-l",
-    "debug"
-  ],
-  { encoding: "utf8" }
-);
+// let createAnalyze = spawnSync(
+//   "npx",
+//   [
+//     "webpack-bundle-analyzer",
+//     "stats.json",
+//     "build",
+//     "-m",
+//     "static",
+//     "-r",
+//     "build/analyze.html",
+//     "-l",
+//     "debug"
+//   ],
+//   { encoding: "utf8" }
+// );
 
-console.log(createAnalyze.stdout);
+// console.log(createAnalyze.stdout);
