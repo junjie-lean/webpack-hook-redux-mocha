@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-09 15:43:31
+ * @Last Modified time: 2020-03-11 15:31:43
  */
 
 /**
@@ -67,7 +67,6 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
             },
             "lodash"
           ],
-          "autobind-class-methods",
           ["@babel/plugin-proposal-class-properties", { loose: false }],
           [
             "module-resolver",
@@ -92,7 +91,8 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
             {
               legacy: true
             }
-          ]
+          ],
+          "@babel/plugin-syntax-dynamic-import"
         ]
       }
     }

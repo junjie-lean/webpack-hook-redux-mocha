@@ -2,17 +2,20 @@
  * @Author: junjie.lean
  * @Date: 2019-12-24 11:02:57
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-09 14:28:56
+ * @Last Modified time: 2020-03-11 16:51:19
  */
 
 /**
  *  recompile project and create an analyze file.
  */
-const { spawnSync } = require("child_process");
+// const { spawnSync } = require("child_process");
+
+const spawn = require("cross-spawn");
+
 const { writeFileSync } = require("fs");
 //webpack complie start:
 
-let webpackCompile = spawnSync(
+let webpackCompile = spawn.sync(
   "npx",
   [
     "webpack",
@@ -31,9 +34,9 @@ let webpackCompile = spawnSync(
 );
 
 // console.log("webpack compile end!");
+// console.log(webpackCompile.stdout);
 // let writeJsonFile = writeFileSync("stats.json", webpackCompile.stdout);
-
-// let createAnalyze = spawnSync(
+// spawn.sync(
 //   "npx",
 //   [
 //     "webpack-bundle-analyzer",
@@ -48,5 +51,3 @@ let webpackCompile = spawnSync(
 //   ],
 //   { encoding: "utf8" }
 // );
-
-// console.log(createAnalyze.stdout);

@@ -1,15 +1,13 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
   Redirect
 } from "react-router-dom";
 
-import Loading from "./../page/loading";
-import Home from "./../page/home";
-import Hooks from "../page/hooks";
-import Demo from "./../page/demo";
+import Loading from "../page/layout-loading";
+import Home from "../page/layout-home";
 export default function RouterRelation() {
   // console.log("router");
   return (
@@ -18,12 +16,8 @@ export default function RouterRelation() {
         <Route exact path="/" component={Loading} />
         <Route path="/loading" component={Loading} />
         <Route path="/home" component={Home} />
-        <Route path="/hooks" component={Hooks} />
-        <Route path="/demo" component={Demo} />
         <Redirect to="/loading" />
       </Switch>
     </Router>
   );
 }
-
-

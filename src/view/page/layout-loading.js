@@ -1,35 +1,16 @@
 import React, { useState, useEffect } from "react";
-import ReactLoding from "react-loading";
+import ReactLoading from "react-loading";
 import { Button } from "antd";
 
 export default function Loading(props) {
-  const [change, setChange] = useState(false);
-
-  const listener = [change];
   const {
     history: { push }
   } = props;
 
-  useEffect(() => {
-    console.log("componentDidMount and when click button");
-  }, listener);
-
   const goto = () => {
-    setChange(!change);
-    props.history.push("/home");
+    push("/home");
   };
 
-  let types = [
-    "blank",
-    "balls",
-    "bars",
-    "bubbles",
-    "cubes",
-    "cylon",
-    "spin",
-    "spinningBubbles",
-    "spokes"
-  ];
   return (
     <>
       <div
@@ -62,7 +43,7 @@ export default function Loading(props) {
           <br />
           <br />
 
-          <ReactLoding type={"bars"} color="#c0c0c0" />
+          <ReactLoading type={"bars"} color="#c0c0c0" />
         </div>
         <div
           style={{
@@ -71,7 +52,7 @@ export default function Loading(props) {
             right: 62
           }}
         >
-          <ReactLoding
+          <ReactLoading
             type={"bubbles"}
             color="#fff"
             width="35px"

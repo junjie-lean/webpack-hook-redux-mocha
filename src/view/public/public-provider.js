@@ -1,8 +1,8 @@
 import React, { createContext, useEffect } from "react";
 import { ConfigProvider, message } from "antd";
 import zhCN from "antd/lib/locale-provider/zh_CN";
-import RouterRelation from "../router/router";
-import PerformanceMonitor from "./monitor";
+import RouterRelation from "../router/router-index";
+import PerformanceMonitor from "./public-monitor";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";

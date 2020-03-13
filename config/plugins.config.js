@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-09 15:45:54
+ * @Last Modified time: 2020-03-11 15:27:13
  */
 
 /**
@@ -28,6 +28,22 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
   let { debugLevel, mode, isOpenAnalyze } = config;
   //打包清空文件夹插件
   plugins.push(new CleanWebpackPlugin());
+
+  //自动引入
+  plugins.push(
+    new webpack.ProvidePlugin({
+      React: "react",
+      F: ["react", "Fragment"],
+      useEffect: ["react", "useEffect"],
+      useMemo: ["react", "useMemo"],
+      useState: ["react", "useState"],
+      useLayoutEffect: ["react", "useLayoutEffect"],
+      useCallback: ["react", "useCallback"],
+      useRef: ["react", "useRef"],
+      _: "lodash",
+      antd: "antd"
+    })
+  );
 
   //hmr热更插件
   plugins.push(new webpack.HotModuleReplacementPlugin());

@@ -2,19 +2,20 @@
  * @Author: junjie.lean
  * @Date: 2020-01-10 11:06:12
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-10 11:27:47
+ * @Last Modified time: 2020-03-11 13:43:35
  */
 
 /**
  * 启动脚本
  */
 
-const cp = require("child_process");
-
+//  windows兼容:
+const spawn = require("cross-spawn");
+// const {spawn} = require("child_process");
 // console.log(process.env.NODE_ENV);
-
 // webpack-dev-server --config ./config/webpack.base.config --color
-let startDevServer = cp.spawn(
+
+let startDevServer = spawn(
   "npx",
   ["webpack-dev-server", "--config", "./config/webpack.base.config", "--color"],
   {

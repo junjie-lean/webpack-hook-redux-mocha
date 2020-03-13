@@ -1,0 +1,14 @@
+Webpack Bundle Analyzer saved report to /Users/junjie.lean/Desktop/30.150svn/Codelib/project/jf-web-app-hook/build/analyze/bundleAnalyzeReport.html
+{
+  "errors": [],
+  "warnings": [],
+  "modules": [],
+  "filteredModules": 461,
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 2,
+      "debug": false
+    }
+  }
+}

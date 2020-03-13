@@ -2,11 +2,11 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-09 14:41:51
+ * @Last Modified time: 2020-03-11 16:17:31
  */
 
 /**
- * ⚠️webpack base config,do not change any config if you not know how it works;
+ *  webpack base config,do not change any config if you not know how it works;
  */
 
 const { setDefaultModule } = require("./module.config.js");
@@ -16,13 +16,12 @@ const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { paths } = require("./paths");
 
-
 /**
  * debugLevel 调试等级,输出等级. 0 到 4.
  * 0不输出sourceMap, 打包速度最快;
  * 4输出详细sourceMap,打包构建速度最慢;
  */
-const debugLevel = 1;
+const debugLevel = 2;
 
 /** mode */
 const mode =
@@ -31,8 +30,6 @@ const mode =
 /** 是否是bundle分析模式,用来分析bundle依赖是否有问题. */
 const isOpenAnalyze =
   process.env.ANALYZE_MODE && process.env.ANALYZE_MODE === "true";
-
-
 
 function setSourceMapAbout(debugLevel) {
   let stats, devtool;
@@ -87,59 +84,22 @@ module.exports = {
   devServer: setDevServer({ stats: setSourceMapAbout(debugLevel).stats }),
   resolve: {
     mainFields: ["main"]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          chunks: "all",
+          minSize: 1024 * 20,
+          maxSize: 1024 * 40,
+          automaticNameDelimiter: "-"
+        },
+        vendor: {
+          test: /node_modules/,
+          name: "vendors", 
+          chunks: "initial"
+        }
+      }
+    }
   }
-  // optimization: {
-  //   minimize: mode == "production",
-  //   splitChunks: {
-  //     chunks: "async",
-  //     minSize: 30000,
-  //     minChunks: 1,
-  //     maxAsyncRequests: 5,
-  //     maxInitialRequests: 3,
-  //     automaticNameDelimiter: ".",
-  //     name: false,
-  //     cacheGroups: {
-  //       vendors: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         priority: -10
-  //       },
-  //       default: {
-  //         minChunks: 2,
-  //         priority: -20,
-  //         reuseExistingChunk: true
-  //       }
-  //     }
-  //   },
-  //   minimizer: [
-  //     new TerserPlugin({
-  //       terserOptions: {
-  //         parse: {
-  //           ecma: 8
-  //         },
-  //         compress: {
-  //           ecma: 5,
-  //           warnings: false,
-  //           comparisons: false,
-  //           inline: 2
-  //         },
-  //         mangle: {
-  //           safari10: true
-  //         },
-  //         output: {
-  //           ecma: 5,
-  //           comments: false,
-  //           ascii_only: true
-  //         }
-  //       },
-  //       cache: true
-  //     }),
-  //     new OptimizeCSSAssetsPlugin({
-  //       cssProcessorOptions: {
-  //         parser: false,
-  //         map: false
-  //       }
-  //     })
-  //   ],
-  //   runtimeChunk: true
-  // }
 };
