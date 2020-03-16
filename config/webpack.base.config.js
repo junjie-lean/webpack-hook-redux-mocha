@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-11 16:17:31
+ * @Last Modified time: 2020-03-16 16:52:03
  */
 
 /**
@@ -12,8 +12,6 @@
 const { setDefaultModule } = require("./module.config.js");
 const { setDevServer } = require("./webpack.dev.config.js");
 const { setDefaultPlugins } = require("./plugins.config.js");
-const TerserPlugin = require("terser-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { paths } = require("./paths");
 
 /**
@@ -90,16 +88,23 @@ module.exports = {
       cacheGroups: {
         common: {
           chunks: "all",
-          minSize: 1024 * 20,
-          maxSize: 1024 * 40,
-          automaticNameDelimiter: "-"
+          minSize: 1024 * 200,
+          maxSize: 1024 * 244, //大于这个阈值,会尝试分割
+          minChunks: 1,
+          maxAsyncRequests: 5,
+          maxInitialRequests: 3,
+          automaticNameDelimiter: "_",
+          name: true
         },
         vendor: {
           test: /node_modules/,
-          name: "vendors", 
-          chunks: "initial"
+          name: "vendors",
+          chunks: "all"
         }
       }
     }
+  },
+  performance: {
+    hints: false
   }
 };
