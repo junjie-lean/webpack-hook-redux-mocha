@@ -5,8 +5,7 @@ import { expect } from "chai";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-import Loading from "../../view/page/loading";
-import Event from "./../../view/components/event";
+import Loading from "../../view/page/layout-loading";
 import { shallow, mount, render } from "enzyme";
 
 describe("<Loading />", () => {
@@ -24,8 +23,4 @@ describe("<Loading />", () => {
   });
 });
 
-describe("<event />", () => {
-  it("event testing:", () => {
-    const warpper = mount(<Event />);
-  });
-});
+
