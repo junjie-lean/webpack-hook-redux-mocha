@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-11 15:27:13
+ * @Last Modified time: 2020-03-16 19:31:45
  */
 
 /**
@@ -41,7 +41,7 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
       useCallback: ["react", "useCallback"],
       useRef: ["react", "useRef"],
       _: "lodash",
-      antd: "antd"
+      Antd: "antd"
     })
   );
 
