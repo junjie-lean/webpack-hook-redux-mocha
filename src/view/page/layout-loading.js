@@ -3,12 +3,9 @@ import ReactLoading from "react-loading";
 import { Button } from "antd";
 
 export default function Loading(props) {
-  const {
-    history: { push }
-  } = props;
-
+  
   const goto = () => {
-    push("/home");
+    props.history.push("/home");
   };
 
   return (
