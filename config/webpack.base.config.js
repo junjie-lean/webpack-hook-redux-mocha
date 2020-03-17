@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-16 16:52:03
+ * @Last Modified time: 2020-03-17 15:40:25
  */
 
 /**
@@ -14,16 +14,17 @@ const { setDevServer } = require("./webpack.dev.config.js");
 const { setDefaultPlugins } = require("./plugins.config.js");
 const { paths } = require("./paths");
 
+/** mode */
+const mode =
+  process.env.NODE_ENV !== "production" ? "development" : "production";
+
 /**
  * debugLevel 调试等级,输出等级. 0 到 4.
  * 0不输出sourceMap, 打包速度最快;
  * 4输出详细sourceMap,打包构建速度最慢;
+ * 不建议修改
  */
-const debugLevel = 2;
-
-/** mode */
-const mode =
-  process.env.NODE_ENV !== "production" ? "development" : "production";
+const debugLevel = mode === "production" ? 0 : 2;
 
 /** 是否是bundle分析模式,用来分析bundle依赖是否有问题. */
 const isOpenAnalyze =
@@ -53,7 +54,7 @@ function setSourceMapAbout(debugLevel) {
       break;
     }
     default: {
-      devtool = "evel";
+      devtool = "eval";
       stats = "none";
     }
   }
@@ -67,12 +68,12 @@ module.exports = {
     path: paths.buildPath,
     filename:
       mode == "production"
-        ? "static/js/i.[hash:6].js" //index.hash.js
-        : "static/js/dev.b.js", //dev.b.js
+        ? "static/js/index.js" //index.js
+        : "static/js/dev.index.js", //dev.b.js
     chunkFilename:
       mode == "production"
-        ? "static/js/c.[name].[hash:6].js" //c.main.hash.js
-        : "static/js/dev.c.[name].js", //dev.c.main.js
+        ? "static/js/chunk/[name].js" //c.main.hash.js
+        : "static/js/chunk/dev.[name].js", //dev.c.main.js
     publicPath: "./"
   },
   devtool: setSourceMapAbout(debugLevel).devtool,
@@ -93,13 +94,13 @@ module.exports = {
           minChunks: 1,
           maxAsyncRequests: 5,
           maxInitialRequests: 3,
-          automaticNameDelimiter: "_",
-          name: true
+          automaticNameDelimiter: ".",
+          name: "limit"
         },
-        vendor: {
-          test: /node_modules/,
-          name: "vendors",
-          chunks: "all"
+        deps: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          name: "deps"
         }
       }
     }

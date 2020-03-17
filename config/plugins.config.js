@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-16 19:31:45
+ * @Last Modified time: 2020-03-17 15:01:53
  */
 
 /**
@@ -57,7 +57,7 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
   if (isOpenAnalyze) {
     plugins.push(
       new BundleAnalyzerPlugin({
-        analyzerHost: "localhsot", //unuse
+        analyzerHost: "localhost", //unuse
         analyzerPort: "10000", //unuse
         analyzerMode: "static",
         reportFilename: "analyze/bundleAnalyzeReport.html"

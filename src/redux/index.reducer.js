@@ -1,23 +1,10 @@
+/*
+ * @Author: junjie.lean
+ * @Date: 2020-03-13 15:31:34
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2020-03-16 20:37:30
+ */
 import { combineReducers } from "redux";
-
-//模拟ajax请求
-const getAsyncData = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve();
-    }, 2500);
-  });
-};
-
-export const test_ac = act => {
-  return async dispatch => {
-    let data = await getAsyncData();
-    dispatch({
-      type: act,
-      data
-    });
-  };
-};
 
 const test_reducer = (state, action) => {
   switch (action.type) {
@@ -34,6 +21,7 @@ const test_reducer = (state, action) => {
     }
   }
 };
+
 
 export default combineReducers({
   test_reducer

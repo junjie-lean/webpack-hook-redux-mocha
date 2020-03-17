@@ -1,6 +1,6 @@
 {
   "name": "jf-web-app-hook",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "port": 4000,
   "scripts": {
@@ -18,10 +18,10 @@
   ],
   "author": "junjie.lean <junjie.lean@foxmail.com>",
   "license": "MIT",
-  "description": "webpack demo",
+  "description": "jf-web-app-hooks",
   "repository": {
     "type": "git",
-    "url": "none"
+    "url": "https://github.com/junjie-lean/jf-web-app-hook.git"
   },
   "dependencies": {
     "@babel/core": "7.8.7",
@@ -32,7 +32,7 @@
     "@babel/register": "7.8.6",
     "@babel/runtime": "7.8.7",
     "@babel/runtime-corejs3": "7.8.7",
-    "antd": "4.0.2",
+    "antd": "^4.0.3",
     "axios": "0.19.1",
     "babel-jest": "25.1.0",
     "babel-loader": "8.0.6",
@@ -63,6 +63,7 @@
     "react-loading": "2.0.3",
     "react-redux": "7.2.0",
     "react-router-dom": "5.1.2",
+    "react-router-transition": "2.0.0",
     "react-test-renderer": "16.13.0",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
@@ -75,7 +76,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "7.8.3",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@babel/plugin-transform-modules-commonjs": "7.7.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
     "@babel/plugin-transform-runtime": "7.8.3",
     "babel-plugin-import": "1.13.0",
     "chalk": "3.0.0",

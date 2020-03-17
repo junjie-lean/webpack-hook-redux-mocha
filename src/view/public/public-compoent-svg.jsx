@@ -2,10 +2,8 @@
  * @Author: junjie.lean
  * @Date: 2020-03-11 14:19:41
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-11 14:23:18
+ * @Last Modified time: 2020-03-17 09:53:19
  */
-
-import React from "react";
 
 export function SVG(props) {
   let style = props.style ? { ...props.style } : {};

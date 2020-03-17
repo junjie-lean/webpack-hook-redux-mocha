@@ -10,12 +10,26 @@ function Home(props) {
   } = useSelector(state => state);
 
   return (
-    <div>
-      easy design,happy coding.
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50vh"
+        }}
+      >
+        <a href="https://github.com/kelseyhightower/nocode" target="_blank">
+          Write nothing, deploy nowhere.
+        </a>
+      </div>
       <br />
-      <Hooks />
-    </div>
+      {/* <Hooks /> */}
+      {/*<Antd.Button type="primary" onClick={props.history.goBack}>
+        回退
+      </Antd.Button> */}
+    </>
   );
 }
 
-export default connect(store => store, { test_ac })(Home);
+export default connect(store => store)(Home);
