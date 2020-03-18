@@ -1,14 +1,16 @@
+/*
+ * @Author: junjie.lean
+ * @Date: 2020-03-18 11:02:37
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2020-03-18 11:03:50
+ */
 import React, { useState, useEffect } from "react";
 import ReactLoading from "react-loading";
 import { Button } from "antd";
 
 export default function Loading(props) {
-  const {
-    history: { push }
-  } = props;
-
   const goto = () => {
-    push("/home");
+    props.history.push("/home");
   };
 
   return (

@@ -1,3 +1,10 @@
+/*
+ * @Author: junjie.lean
+ * @Date: 2020-03-18 11:02:27
+ * @Last Modified by:   junjie.lean
+ * @Last Modified time: 2020-03-18 11:02:27
+ */
+
 import "./../../style/index.scss";
 import { test_ac } from "../../redux/index.reducer";
 import { connect, useSelector, useDispatch } from "react-redux";
