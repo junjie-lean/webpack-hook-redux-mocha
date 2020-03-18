@@ -1,7 +1,13 @@
-{
-  "env": {
-    "test": {
-      "presets": ["@babel/preset-react", "@babel/preset-env"]
-    }
-  }
+/*
+ * @Author: junjie.lean
+ * @Date: 2020-03-18 10:16:06
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2020-03-18 10:17:25
+ */
+
+/*
+ * 仅配合jest的必要设置,本身webpack打包的babel配置使用babel-loader实现.
+ */
+ {
+  "presets": [["env", "react"]]
 }
