@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-03-16 17:35:21
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-17 14:18:32
+ * @Last Modified time: 2020-03-19 15:31:27
  */
 
 /**
@@ -54,4 +54,4 @@ export default function sendMessage() {
   };
 }
 
-// window.addEventListener("click", foo, false);
+

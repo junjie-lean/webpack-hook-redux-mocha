@@ -8,6 +8,7 @@ import {
 
 import Loading from "../page/layout-loading";
 import Home from "../page/layout-home";
+import ChangeLog from "../page/layout-changelog";
 import { AnimatedSwitch as Switch } from "react-router-transition";
 
 export default function RouterRelation() {
@@ -23,6 +24,7 @@ export default function RouterRelation() {
         <Route exact path="/" component={Loading} />
         <Route path="/loading" component={Loading} />
         <Route path="/home" component={Home} />
+        <Route path="/changelog" component={ChangeLog} />
         <Redirect to="/loading" />
       </Switch>
     </Router>

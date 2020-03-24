@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean
- * @Date: 2020-03-18 11:05:16
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-18 11:06:34
+ * @Date: 2020-03-18 11:09:36
+ * @Last Modified by:   junjie.lean
+ * @Last Modified time: 2020-03-18 11:09:36
  */
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
@@ -12,6 +12,7 @@ import { expect } from "chai";
 Enzyme.configure({ adapter: new Adapter() });
 
 import Loading from "../../view/page/layout-loading";
+
 import { shallow, mount, render } from "enzyme";
 
 describe("<Loading />", () => {

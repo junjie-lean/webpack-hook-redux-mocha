@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-17 15:40:25
+ * @Last Modified time: 2020-03-19 13:44:21
  */
 
 /**
@@ -13,6 +13,8 @@ const { setDefaultModule } = require("./module.config.js");
 const { setDevServer } = require("./webpack.dev.config.js");
 const { setDefaultPlugins } = require("./plugins.config.js");
 const { paths } = require("./paths");
+
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 
 /** mode */
 const mode =
@@ -30,6 +32,14 @@ const debugLevel = mode === "production" ? 0 : 2;
 const isOpenAnalyze =
   process.env.ANALYZE_MODE && process.env.ANALYZE_MODE === "true";
 
+/** 是否启用打包分析模式,用来分析打包过慢的原因 */
+const isMeasure = process.env.MEASURE && process.env.MEASURE === "true";
+
+const smp = new SpeedMeasurePlugin({
+  disable: !isMeasure
+});
+
+/* 输出的source-map设置 */
 function setSourceMapAbout(debugLevel) {
   let stats, devtool;
   switch (debugLevel) {
@@ -61,7 +71,7 @@ function setSourceMapAbout(debugLevel) {
   return { devtool, stats };
 }
 
-module.exports = {
+module.exports = smp.wrap({
   mode,
   entry: "./src/index.js",
   output: {
@@ -108,4 +118,4 @@ module.exports = {
   performance: {
     hints: false
   }
-};
+});

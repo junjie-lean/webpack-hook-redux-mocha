@@ -1,4 +1,4 @@
-/* @import '~antd/dist/antd.css'; */
+@import "~antd/dist/antd.css";
 body {
   margin: 0;
   padding: 10px;
@@ -16,6 +16,36 @@ code {
     monospace;
 }
 
+#app {
+  height: 100%;
+}
+
+.lean-homeStyle {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  button {
+    padding-right: 2px;
+  }
+  > div:last-child {
+    text-align: center;
+  }
+  .lean-homeCursor {
+    animation: toggle 0.7s infinite;
+  }
+}
+
+@keyframes toggle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .switch-wrapper {
   position: relative;
   width: 100%;
@@ -26,4 +56,23 @@ code {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.lean-markdownContent {
+  padding-left: 100px;
+  pre {
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #3ac100;
+    code {
+      padding: 15px;
+      background: #f1f1f1;
+      display: inline-block;
+      border-radius: 8px;
+    }
+  }
+  h2 {
+    margin-top: 80px;
+  }
 }

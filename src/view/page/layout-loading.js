@@ -1,17 +1,18 @@
 /*
  * @Author: junjie.lean
- * @Date: 2020-03-18 11:02:37
+ * @Date: 2020-03-18 11:00:34
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-18 11:03:50
+ * @Last Modified time: 2020-03-23 13:29:35
  */
-import React, { useState, useEffect } from "react";
+
 import ReactLoading from "react-loading";
-import { Button } from "antd";
 
 export default function Loading(props) {
-  const goto = () => {
-    props.history.push("/home");
-  };
+  useEffect(() => {
+    setTimeout(() => {
+      props.history.push("/home");
+    }, 3000);
+  }, []);
 
   return (
     <>
@@ -31,17 +32,6 @@ export default function Loading(props) {
           <br />
           <br />
           <br />
-          <Button
-            type="danger"
-            ghost={true}
-            onClick={goto}
-            style={{ width: 120 }}
-            onClick={() => {
-              goto();
-            }}
-          >
-            to home
-          </Button>
           <br />
           <br />
 

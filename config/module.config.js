@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-17 15:18:18
+ * @Last Modified time: 2020-03-19 15:52:46
  */
 
 /**
@@ -16,7 +16,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
   let rules = [...loaderArr];
   let { mode } = config;
   const rawLoader = {
-    test: /\.(txt|svg)$/,
+    test: /\.(txt|svg|md)$/,
     use: "raw-loader",
     include: resolve(__dirname, "..", "src")
   };
@@ -41,7 +41,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
               useBuiltIns: "usage", //按需加入polyfill
               targets: {
                 chrome: "58",
-                ie: "10"
+                ie: "11"
               },
               corejs: "3"
             }
@@ -99,7 +99,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
   };
 
   const urlLoader = {
-    test: /\.(png|jpg|jqeg|gif)$/,
+    test: /\.(png|jpg|jpeg|gif)$/,
     use: [
       {
         loader: "url-loader",
@@ -154,6 +154,18 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
     ]
   };
 
+  const markdownLoader = {
+    test: /\.md$/,
+    use: [
+      {
+        loader: "html-loader"
+      },
+      {
+        loader: "markdown-loader"
+      }
+    ]
+  };
+
   const happypackLoader = {
     test: /.js$/,
     use: "happypack/loader?id=happyPackerJs",
@@ -165,6 +177,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
     lessLoader,
     rawLoader,
     urlLoader,
+    markdownLoader,
     babelLoader,
     happypackLoader
   );
