@@ -50,3 +50,11 @@ npm install --save core-js@3.6.4 css-loader@3.4.2 style-loader@1.1.3 less@3.11.1
 ```
 2. 修改框架初始化显示,增加changelog的显示.
 3. 增加路由过渡组件,使页面在进行路由跳转的时候更加平滑.
+
+##  "version": "1.0.5"
+2020年04月13日10:00:47
+1. 相关依赖项升级,执行脚本:
+```
+npm install --save-dev chalk@4.0.0 --color=always
+npm install --save @babel/preset-env@7.9.5 @babel/preset-react@7.9.4 core-js@3.6.5 cross-spawn@7.0.2 jsdom@16.2.2 webpack@4.42.1 antd@4.1.2 babel-jest@25.3.0 css-loader@3.5.2 html-loader@1.1.0 jest@25.3.0 url-loader@4.1.0 html-webpack-plugin@4.2.0 --color=always
+```   

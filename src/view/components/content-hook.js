@@ -2,33 +2,47 @@
  * @Author: junjie.lean
  * @Date: 2020-03-11 15:19:52
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-16 20:45:55
+ * @Last Modified time: 2020-03-25 17:16:36
  */
 
-import { test_ac } from "./../../redux/actions.js";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
+export default function Hooks(props) {
+  const dispatch = useDispatch();
+  const reducerData = useSelector(state => {
+    return state.test_reducer;
+  });
+  const [a, setA] = useState(1);
 
-function Hooks(props) {
-  useEffect(() => {
-    console.log("props:", props);
-  }, []);
-  const [test, setTest] = useState(props.test_reducer.data);
+  let req = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    }).then(() => {
+      return {
+        data: "hook sync redux, (ajax res data)"
+      };
+    });
+  };
+
+  const test_ac = async () => {
+    // dispatch({type:""})
+    let res = await req();
+    dispatch({ type: "test", data: res.data });
+    setA(2);
+    console.log(a);
+  };
+
   return (
-    <F>
+    <div>
       <br />
+      <h3>hello {reducerData.data}</h3>
       <br />
-      <br />
-      <h3>hooks</h3>
-      <div>{test}</div>
-      <br />
-      <br />
-      <Antd.Button type="primary" onClick={test_ac}>
-        ??
+      <Antd.Button type="primary" onClick={test_ac} size={"large"}>
+        hook dispatch
       </Antd.Button>
       <br />
-    </F>
+    </div>
   );
 }
-
-export default connect(store => store, { test_ac })(Hooks);

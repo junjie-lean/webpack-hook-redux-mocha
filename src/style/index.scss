@@ -26,9 +26,6 @@ code {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
-  button {
-    padding-right: 2px;
-  }
   > div:last-child {
     text-align: center;
   }

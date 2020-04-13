@@ -2,11 +2,11 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:34
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-23 13:29:35
+ * @Last Modified time: 2020-03-24 13:02:38
  */
 
 import ReactLoading from "react-loading";
-
+import React, { useEffect } from "react";
 export default function Loading(props) {
   useEffect(() => {
     setTimeout(() => {

@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-19 13:44:21
+ * @Last Modified time: 2020-03-25 14:24:09
  */
 
 /**
@@ -26,7 +26,7 @@ const mode =
  * 4输出详细sourceMap,打包构建速度最慢;
  * 不建议修改
  */
-const debugLevel = mode === "production" ? 0 : 2;
+const debugLevel = mode === "production" ? 0 : 3;
 
 /** 是否是bundle分析模式,用来分析bundle依赖是否有问题. */
 const isOpenAnalyze =
