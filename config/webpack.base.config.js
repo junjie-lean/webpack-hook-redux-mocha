@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-25 14:24:09
+ * @Last Modified time: 2020-04-21 13:08:35
  */
 
 /**
@@ -95,6 +95,7 @@ module.exports = smp.wrap({
     mainFields: ["main"]
   },
   optimization: {
+    runtimeChunk:true,
     splitChunks: {
       cacheGroups: {
         common: {
@@ -106,6 +107,7 @@ module.exports = smp.wrap({
           maxInitialRequests: 3,
           automaticNameDelimiter: ".",
           name: "limit"
+          // name: "chunk"
         },
         deps: {
           test: /[\\/]node_modules[\\/]/,

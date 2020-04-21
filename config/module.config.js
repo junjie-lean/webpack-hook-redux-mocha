@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-19 15:52:46
+ * @Last Modified time: 2020-04-20 13:07:24
  */
 
 /**
@@ -113,13 +113,14 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
   };
 
   const styleLoader = {
-    test: /\.(scss|css)$/,
+    test: /\.(scss|css)$/i,
     use: [
       {
         loader: MiniCssExtractPlugin.loader,
         options: {
           hmr: process.env.NODE_ENV == "development",
-          reloadAll: true
+          reloadAll: true,
+          esModule: true,
         }
       },
       {
@@ -132,7 +133,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
   };
 
   const lessLoader = {
-    test: /\.less$/,
+    test: /\.less$/i,
     // include: [/[\\/]node_modules[\\/].*antd/],
     use: [
       MiniCssExtractPlugin.loader, // replaces extract text plugin in webpack 4
@@ -167,7 +168,7 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
   };
 
   const happypackLoader = {
-    test: /.js$/,
+    test: /.jsx?$/,
     use: "happypack/loader?id=happyPackerJs",
     exclude: /node_modules/
   };

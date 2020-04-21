@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-17 15:01:53
+ * @Last Modified time: 2020-04-20 12:43:32
  */
 
 /**
@@ -23,7 +23,7 @@ const HappyPack = require("happypack");
 const os = require("os");
 const threadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
-module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
+module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
   let plugins = [...defaultPlugin];
   let { debugLevel, mode, isOpenAnalyze } = config;
   //打包清空文件夹插件
@@ -41,17 +41,21 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
       useCallback: ["react", "useCallback"],
       useRef: ["react", "useRef"],
       _: "lodash",
-      Antd: "antd"
+      Antd: "antd",
     })
   );
 
   //hmr热更插件
-  plugins.push(new webpack.HotModuleReplacementPlugin());
+  plugins.push(
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true,
+    })
+  );
 
-  new webpack.DllReferencePlugin({
-    context: __dirname,
-    manifest: require("./../public/manifest.json")
-  });
+  // new webpack.DllReferencePlugin({
+  //   context: __dirname,
+  //   manifest: require("./../public/manifest.json"),
+  // });
 
   //bundleAnalyze
   if (isOpenAnalyze) {
@@ -60,7 +64,7 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
         analyzerHost: "localhost", //unuse
         analyzerPort: "10000", //unuse
         analyzerMode: "static",
-        reportFilename: "analyze/bundleAnalyzeReport.html"
+        reportFilename: "analyze/bundleAnalyzeReport.html",
       })
     );
   }
@@ -70,12 +74,12 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
     new HtmlWebpackPlugin({
       title: "webpack-app",
       // template: paths.template
-      template: "public/index.html"
+      template: "public/index.html",
     })
   );
   if (mode !== "development") {
     // 混淆编译插件;
-    // 对编译有极大的性能9影响,开发模式切勿启用
+    // 对编译有极大的性能影响,开发模式切勿启用
 
     //单线程式编译模式
     // plugins.push(
@@ -99,9 +103,9 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
         uglifyJS: {
           output: {
             comments: false,
-            beautify: false
-          }
-        }
+            beautify: false,
+          },
+        },
       })
     );
 
@@ -109,10 +113,10 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
     plugins.push(
       new ProgressBarPlugin({
         format:
-          "  build [:bar] " +
+          "  jf-web-app-hook Now Building: [:bar] " +
           chalk.green.bold(":percent") +
           " (:elapsed seconds)",
-        clear: false
+        clear: false,
       })
     );
   }
@@ -122,7 +126,7 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
     new MiniCssExtractPlugin({
       filename: "static/css/index.css",
       // chunkFilename: "[id].css",
-      ignoreOrder: false
+      ignoreOrder: false,
     })
   );
 
@@ -138,11 +142,11 @@ module.exports.setDefaultPlugins = function(config = {}, defaultPlugin = []) {
         {
           loader: "babel-loader",
           query: {
-            presets: ["@babel/react", "@babel/env"]
-          }
-        }
+            presets: ["@babel/react", "@babel/env"],
+          },
+        },
       ],
-      threadPool: threadPool
+      threadPool: threadPool,
     })
   );
 

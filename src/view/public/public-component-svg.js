@@ -2,10 +2,10 @@
  * @Author: junjie.lean
  * @Date: 2020-03-11 14:19:41
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-17 09:53:19
+ * @Last Modified time: 2020-04-20 09:15:18
  */
 
-export function SVG(props) {
+export default function SVG(props) {
   let style = props.style ? { ...props.style } : {};
 
   if (props.width) {

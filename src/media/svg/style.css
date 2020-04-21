@@ -1,0 +1,92 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-bianji {
+  width: 0.875em;
+}
+
+.icon-ex {
+  width: 1.0625em;
+}
+
+.icon-guize {
+  width: 1.0625em;
+}
+
+.icon-huifu {
+  width: 1.0625em;
+}
+
+.icon-jiance {
+  width: 1.15625em;
+}
+
+.icon-jiantou {
+  width: 0.59375em;
+}
+
+.icon-jsqxgl {
+  width: 0.9375em;
+}
+
+.icon-pdf {
+  width: 0.90625em;
+}
+
+.icon-quxiao {
+  width: 0.96875em;
+}
+
+.icon-rycdap {
+  width: 1.0625em;
+}
+
+.icon-shangchuan {
+  width: 1.125em;
+}
+
+.icon-suoding {
+  width: 0.875em;
+}
+
+.icon-touxiang {
+  width: 0.84375em;
+}
+
+.icon-tupian {
+  width: 1.125em;
+}
+
+.icon-word {
+  width: 0.9375em;
+}
+
+.icon-xiala1 {
+  width: 1.59375em;
+}
+
+.icon-xialaxk {
+  width: 1.65625em;
+}
+
+.icon-xitonglogo {
+  width: 1.03125em;
+}
+
+.icon-zhizheng {
+  width: 0.9375em;
+}

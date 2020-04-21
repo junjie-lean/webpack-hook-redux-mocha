@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 15:41:40
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-01-09 15:48:25
+ * @Last Modified time: 2020-04-21 13:13:09
  */
 
 /**
@@ -40,9 +40,9 @@ module.exports.setDevServer = function(defaultConfig = {}) {
     after: () => {
       setTimeout(() => {
         let url = `http://localhost:${require("./../package").port}`;
-        clearConsole();
+        // clearConsole();
         console.log(
-          `Server start up @\`http://localhost:${
+          `\n\n\n\tServer start up @\`http://localhost:${
             require("./../package").port
           }\``
         );

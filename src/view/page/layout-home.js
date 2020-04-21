@@ -2,19 +2,15 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:47
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-25 17:24:10
+ * @Last Modified time: 2020-04-21 13:06:40
  */
 
 import "./../../style/index.scss";
-import { connect, useSelector } from "react-redux";
 import Footer from "./../components/component-footer";
-
 import Hook from "./../components/content-hook";
+import SVG from "./../public/public-component-svg";
 
 function Home(props) {
-  const {
-    test_reducer: { data }
-  } = useSelector(state => state);
 
   const [stringSource] = useState("  Write nothing, deploy nowhere...");
   const [string, setStr] = useState("");
@@ -38,8 +34,10 @@ function Home(props) {
   const hookComponent = useMemo(() => {
     return <Hook />;
   }, [props]);
+
   return (
     <div className="lean-homeStyle">
+   
       <div>
         <Antd.Button type="link" style={{ paddingRight: 2 }}>
           <a href="https://github.com/kelseyhightower/nocode" target="_blank">
@@ -49,9 +47,10 @@ function Home(props) {
         <span className="lean-homeCursor">|</span>
       </div>
       {/* {hookComponent} */}
+      {/* <SVG type="add" /> */}
       <Footer {...props} />
     </div>
   );
 }
 
-export default connect(store => store)(Home);
+export default Home;
