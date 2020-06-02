@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-04-20 12:43:32
+ * @Last Modified time: 2020-05-06 16:01:03
  */
 
 /**
@@ -26,8 +26,11 @@ const threadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
   let plugins = [...defaultPlugin];
   let { debugLevel, mode, isOpenAnalyze } = config;
-  //打包清空文件夹插件
-  plugins.push(new CleanWebpackPlugin());
+
+  if (mode === "production") {
+    //打包清空文件夹插件
+    plugins.push(new CleanWebpackPlugin());
+  }
 
   //自动引入
   plugins.push(
@@ -41,16 +44,16 @@ module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
       useCallback: ["react", "useCallback"],
       useRef: ["react", "useRef"],
       _: "lodash",
-      Antd: "antd",
+      // Antd: "antd",
     })
   );
 
   //hmr热更插件
-  plugins.push(
-    new webpack.HotModuleReplacementPlugin({
-      multiStep: true,
-    })
-  );
+  // plugins.push(
+  //   new webpack.HotModuleReplacementPlugin({
+  //     multiStep: true,
+  //   })
+  // );
 
   // new webpack.DllReferencePlugin({
   //   context: __dirname,

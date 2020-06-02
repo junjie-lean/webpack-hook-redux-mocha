@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-04-20 13:07:24
+ * @Last Modified time: 2020-06-01 13:32:21
  */
 
 /**
@@ -12,13 +12,14 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { resolve } = require("path");
 
-module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
+module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
   let rules = [...loaderArr];
   let { mode } = config;
+
   const rawLoader = {
-    test: /\.(txt|svg|md)$/,
+    test: /\.(txt|svg)$/i,
     use: "raw-loader",
-    include: resolve(__dirname, "..", "src")
+    // include: resolve(__dirname, "..", "src"),
   };
 
   const babelLoader = {
@@ -41,11 +42,11 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
               useBuiltIns: "usage", //按需加入polyfill
               targets: {
                 chrome: "58",
-                ie: "11"
+                ie: "11",
               },
-              corejs: "3"
-            }
-          ]
+              corejs: "3",
+            },
+          ],
         ],
         plugins: [
           [
@@ -54,82 +55,104 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
               libraryName: "antd",
               libraryDirectory: "es",
               // style: "css"
-              style: true
+              style: true,
             },
-            "antd"
+            "antd",
           ],
           [
             "import",
             {
               libraryName: "lodash",
               libraryDirectory: "",
-              camel2DashComponentName: false
+              camel2DashComponentName: false,
             },
-            "lodash"
+            "lodash",
           ],
           ["@babel/plugin-proposal-class-properties", { loose: false }],
           [
             "module-resolver",
             {
-              extensions: [".js", ".jsx"]
-            }
+              extensions: [".js", ".jsx"],
+            },
           ],
           [
             "@babel/plugin-transform-runtime",
             {
-              corejs: "3"
-            }
+              corejs: "3",
+            },
           ],
           [
             "@babel/plugin-transform-modules-commonjs",
             {
-              allowTopLevelThis: true
-            }
+              allowTopLevelThis: true,
+            },
           ],
           [
             "@babel/plugin-proposal-decorators",
             {
-              legacy: true
-            }
+              legacy: true,
+            },
           ],
-          "@babel/plugin-syntax-dynamic-import"
-        ]
-      }
-    }
-  };
-
-  const urlLoader = {
-    test: /\.(png|jpg|jpeg|gif)$/,
-    use: [
-      {
-        loader: "url-loader",
-        options: {
-          limit: 10240, //unit:byte,under this value to transform to base64 code.
-          name: "static/media/[name].[hash:6].[ext]"
-        }
-      }
-    ],
-    include: resolve(__dirname, "..", "src")
+          "@babel/plugin-syntax-dynamic-import",
+        ],
+      },
+    },
   };
 
   const styleLoader = {
     test: /\.(scss|css)$/i,
     use: [
+      "style-loader",
       {
         loader: MiniCssExtractPlugin.loader,
         options: {
+          publicPath: "../../",
           hmr: process.env.NODE_ENV == "development",
           reloadAll: true,
           esModule: true,
-        }
+        },
       },
       {
-        loader: "css-loader"
+        loader: "css-loader",
+        options: {
+          importLoaders: 1,
+          modules: { auto: true },
+        },
       },
       {
-        loader: "sass-loader"
-      }
-    ]
+        loader: "sass-loader",
+      },
+    ],
+  };
+
+  const urlLoader = {
+    test: /\.(png|jpg|jpeg|gif)$/i,
+    use: [
+      {
+        loader: "url-loader",
+        options: {
+          limit: 1000 * 1024 * 2, //unit:byte,under this value to transform to base64 code.
+          name: "./static/media/pic/[name].[hash:8].[ext]",
+          // name: "[name].[hash:8].[ext]",
+        },
+      },
+    ],
+    include: resolve(__dirname, "..", "src"),
+  };
+
+  const fontLoader = {
+    test: /.(ttf|eot|woff|woff2)$/i, // ttf|eot|svg|woff|woff2
+    use: [
+      {
+        loader: "url-loader",
+        options: {
+          name: "[name].[hash:8].[ext]",
+          limit: 1000 * 1024,
+          name: "./static/media/font/[name].[hash:8].[ext]",
+        },
+      },
+    ],
+    include: resolve(__dirname, "..", "src"),
   };
 
   const lessLoader = {
@@ -142,43 +165,47 @@ module.exports.setDefaultModule = function(config = {}, loaderArr = []) {
         loader: "postcss-loader",
         options: {
           config: {
-            path: "./config/postcss.config.js"
-          }
-        }
+            path: "./config/postcss.config.js",
+          },
+        },
       },
       {
         loader: "less-loader",
         options: {
-          javascriptEnabled: true
-        }
-      }
-    ]
+          lessOptions: {
+            javascriptEnabled: true,
+          },
+        },
+      },
+    ],
   };
 
   const markdownLoader = {
     test: /\.md$/,
     use: [
       {
-        loader: "html-loader"
+        loader: "html-loader",
       },
       {
-        loader: "markdown-loader"
-      }
-    ]
+        loader: "markdown-loader",
+      },
+    ],
   };
 
   const happypackLoader = {
     test: /.jsx?$/,
     use: "happypack/loader?id=happyPackerJs",
-    exclude: /node_modules/
+    exclude: /node_modules/,
   };
 
   rules.push(
+    // svgrLoader,
     styleLoader,
     lessLoader,
     rawLoader,
     urlLoader,
-    markdownLoader,
+    fontLoader,
+    // markdownLoader,
     babelLoader,
     happypackLoader
   );

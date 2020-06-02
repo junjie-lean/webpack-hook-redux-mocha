@@ -45,8 +45,8 @@ npm install --save core-js@3.6.4 css-loader@3.4.2 style-loader@1.1.3 less@3.11.1
 2020年03月23日09:43:33
 1. 相关依赖项升级,执行脚本:
 ```
- npm install --save react@16.13.1 react-dom@16.13.1 react-test-renderer@16.13.1 speed-measure-webpack-plugin@1.3.3 @babel/core@7.9.0 @babel/preset-env@7.9.0 @babel/preset-react@7.9.1 @babel/register@7.9.0 @babel/runtime@7.9.2 @babel/runtime-corejs3@7.9.2 babel-loader@8.1.0 html-loader@1.0.0 --color=always
- npm install --save-dev react-dev-utils@10.2.1 @babel/plugin-transform-modules-commonjs@7.9.0 @babel/plugin-transform-runtime@7.9.0 --color=always
+ npm install --save react@16.13.1 react-dom@16.13.1 react-test-renderer@16.13.1 speed-measure-webpack-plugin@1.3.3 @babel/core@7.9.0 @babel/preset-env@7.9.0 @babel/preset-react@7.9.1 @babel/register@7.9.0 @babel/runtime@7.9.2 @babel/runtime-corejs3@7.9.2 babel-loader@8.1.0 html-loader@1.0.0 
+ npm install --save-dev react-dev-utils@10.2.1 @babel/plugin-transform-modules-commonjs@7.9.0 @babel/plugin-transform-runtime@7.9.0 
 ```
 2. 修改框架初始化显示,增加changelog的显示.
 3. 增加路由过渡组件,使页面在进行路由跳转的时候更加平滑.
@@ -55,6 +55,49 @@ npm install --save core-js@3.6.4 css-loader@3.4.2 style-loader@1.1.3 less@3.11.1
 2020年04月13日10:00:47
 1. 相关依赖项升级,执行脚本:
 ```
-npm install --save-dev chalk@4.0.0 --color=always
-npm install --save @babel/preset-env@7.9.5 @babel/preset-react@7.9.4 core-js@3.6.5 cross-spawn@7.0.2 jsdom@16.2.2 webpack@4.42.1 antd@4.1.2 babel-jest@25.3.0 css-loader@3.5.2 html-loader@1.1.0 jest@25.3.0 url-loader@4.1.0 html-webpack-plugin@4.2.0 --color=always
+npm install --save-dev chalk@4.0.0 
+npm install --save @babel/preset-env@7.9.5 @babel/preset-react@7.9.4 core-js@3.6.5 cross-spawn@7.0.2 jsdom@16.2.2 webpack@4.42.1 antd@4.1.2 babel-jest@25.3.0 css-loader@3.5.2 html-loader@1.1.0 jest@25.3.0 url-loader@4.1.0 html-webpack-plugin@4.2.0 
 ```   
+
+##   "version": "1.0.6"
+2020年05月06日16:02:59
+1. 相关依赖项升级,执行脚本:
+```
+npm install --save @babel/core@7.9.6 @babel/preset-env@7.9.6 @babel/runtime@7.9.6 @babel/runtime-corejs3@7.9.6 css-loader@3.5.3 antd@4.2.0 html-webpack-plugin@4.3.0 node-sass@
+4.14.1 style-loader@1.2.1 webpack@4.43.0 babel-jest@26.0.1 jest@26.0.1 less-loader@6.0.0 
+```
+2. 修改打包清空文件夹逻辑
+3. less-loader配置修改
+
+##   "version": "1.0.7"
+2020年05月09日10:51:18
+1. 修复全局化配置中,未能正确处理国际化语言的bug.
+2. 暂时关闭redux
+
+
+##   "version": "1.0.8"
+2020年05月13日19:11:33
+1. 相关依赖项升级,执行脚本:
+```
+npm install --save antd@4.2.2 less-loader@6.1.0 react-router-dom@5.2.0 webpack-dev-server@3.11.0
+npm install --save-dev terser-webpack-plugin@3.0.1 
+```
+2. 处理file-loader缺失的bug
+
+##   "version": "1.0.9"
+2020年05月29日09:24:58
+1. 相关依赖项升级,执行脚本:
+```
+npm install --save antd@4.2.5 cross-spawn@7.0.3 @babel/core@7.10.1 @babel/plugin-proposal-class-properties@7.10.1 @babel/preset-env@7.10.1 @babel/preset-react@7.10.1 @babel/register@7.10.1 @babel/runtime@7.10.1 @babel/runtime-corejs3@7.10.1
+npm install --save-dev terser-webpack-plugin@3.0.2 @babel/plugin-proposal-decorators@7.10.1 @babel/plugin-transform-modules-commonjs@7.10.1 @babel/plugin-transform-runtime@7.10.1 webpack-bundle-analyzer@3.8.0
+```
+2. 处理无法在css中引用url()路径为背景图片的bug
+
+##  "version": "1.1.0"
+2020年06月01日13:36:17
+1. 相关依赖项升级,执行脚本:
+```
+npm install --save @babel/core@7.10.2 @babel/preset-env@7.10.2 @babel/runtime@7.10.2 @babel/runtime-corejs3@7.10.2 less@3.11.2 @babel/polyfill@7.10.1 antd@4.3.0
+```  
+2. 处理无法再css中引入url()路径为字体文件的bug
+3. package.json版本固定,移除部分无用依赖,减少node_modules体积

@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 15:41:40
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-04-21 13:13:09
+ * @Last Modified time: 2020-06-01 13:49:05
  */
 
 /**
@@ -12,7 +12,7 @@ const path = require("path");
 const openBrowser = require("react-dev-utils/openBrowser");
 const clearConsole = require("react-dev-utils/clearConsole");
 
-module.exports.setDevServer = function(defaultConfig = {}) {
+module.exports.setDevServer = function (defaultConfig = {}) {
   let devConfig = {
     ...defaultConfig,
     contentBase: path.join(__dirname, "..", "public"),
@@ -20,7 +20,7 @@ module.exports.setDevServer = function(defaultConfig = {}) {
     hot: true,
     watchContentBase: true,
     watchOptions: {
-      ignored: path.join(__dirname, "..", "node_modules")
+      ignored: path.join(__dirname, "..", "node_modules"),
     },
     publicPath: "/",
     inline: true,
@@ -34,7 +34,7 @@ module.exports.setDevServer = function(defaultConfig = {}) {
     index: "index.html",
     clientLogLevel: "none",
     historyApiFallback: {
-      disableDotRule: true
+      disableDotRule: true,
     },
     open: false,
     after: () => {
@@ -48,7 +48,7 @@ module.exports.setDevServer = function(defaultConfig = {}) {
         );
         openBrowser(url);
       }, 0);
-    }
+    },
   };
 
   return devConfig;

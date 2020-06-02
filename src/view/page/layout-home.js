@@ -2,16 +2,16 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:47
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-04-21 13:06:40
+ * @Last Modified time: 2020-06-01 09:49:04
  */
 
 import "./../../style/index.scss";
 import Footer from "./../components/component-footer";
 import Hook from "./../components/content-hook";
-import SVG from "./../public/public-component-svg";
+import Antd from "antd";
+// import SVG from "./../public/public-component-svg";
 
 function Home(props) {
-
   const [stringSource] = useState("  Write nothing, deploy nowhere...");
   const [string, setStr] = useState("");
 
@@ -37,9 +37,8 @@ function Home(props) {
 
   return (
     <div className="lean-homeStyle">
-   
       <div>
-        <Antd.Button type="link" style={{ paddingRight: 2 }}>
+        <Antd.Button type="link" style={{ paddingRight: 2, fontSize: 32 }}>
           <a href="https://github.com/kelseyhightower/nocode" target="_blank">
             {string}
           </a>
@@ -47,7 +46,7 @@ function Home(props) {
         <span className="lean-homeCursor">|</span>
       </div>
       {/* {hookComponent} */}
-      {/* <SVG type="add" /> */}
+      {/* <SVG type="add" style={{ fill: "red", width: 14, height: 14 }} /> */}
       <Footer {...props} />
     </div>
   );

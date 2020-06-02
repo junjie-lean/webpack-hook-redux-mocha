@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-04-21 13:08:35
+ * @Last Modified time: 2020-06-01 13:49:00
  */
 
 /**
@@ -36,7 +36,7 @@ const isOpenAnalyze =
 const isMeasure = process.env.MEASURE && process.env.MEASURE === "true";
 
 const smp = new SpeedMeasurePlugin({
-  disable: !isMeasure
+  disable: !isMeasure,
 });
 
 /* 输出的source-map设置 */
@@ -84,18 +84,18 @@ module.exports = smp.wrap({
       mode == "production"
         ? "static/js/chunk/[name].js" //c.main.hash.js
         : "static/js/chunk/dev.[name].js", //dev.c.main.js
-    publicPath: "./"
+    publicPath: "./",
   },
   devtool: setSourceMapAbout(debugLevel).devtool,
   stats: setSourceMapAbout(debugLevel).stats,
   module: setDefaultModule({ debugLevel, mode }),
   plugins: setDefaultPlugins({ debugLevel, mode, isOpenAnalyze }),
   devServer: setDevServer({ stats: setSourceMapAbout(debugLevel).stats }),
-  resolve: {
-    mainFields: ["main"]
-  },
+  // resolve: {
+  //    mainFields: ["main"],
+  // },
   optimization: {
-    runtimeChunk:true,
+    runtimeChunk: true,
     splitChunks: {
       cacheGroups: {
         common: {
@@ -115,9 +115,10 @@ module.exports = smp.wrap({
           name: "deps"
         }
       }
-    }
+    },
   },
   performance: {
-    hints: false
-  }
+    hints: false,
+  },
+
 });

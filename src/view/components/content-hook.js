@@ -6,7 +6,7 @@
  */
 
 import { useSelector, useDispatch } from "react-redux";
-
+import Antd from 'antd';
 export default function Hooks(props) {
   const dispatch = useDispatch();
   const reducerData = useSelector(state => {
