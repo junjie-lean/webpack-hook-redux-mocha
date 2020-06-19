@@ -8,3 +8,5 @@ coverage
 .DS_Store
 package-lock.json
 
+.vscode
+.vscode/settings.json
