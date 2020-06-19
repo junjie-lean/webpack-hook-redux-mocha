@@ -9,5 +9,7 @@
  * 仅配合jest的必要设置,本身webpack打包的babel配置使用babel-loader实现.
  */
 {
+  
   "presets": ["@babel/preset-react", "@babel/preset-env"]
+  
 }
