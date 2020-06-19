@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-05-06 16:01:03
+ * @Last Modified time: 2020-06-17 17:58:40
  */
 
 /**
@@ -22,7 +22,7 @@ const chalk = require("chalk");
 const HappyPack = require("happypack");
 const os = require("os");
 const threadPool = HappyPack.ThreadPool({ size: os.cpus().length });
-
+const package = require("./../package.json");
 module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
   let plugins = [...defaultPlugin];
   let { debugLevel, mode, isOpenAnalyze } = config;
@@ -116,7 +116,8 @@ module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
     plugins.push(
       new ProgressBarPlugin({
         format:
-          "  jf-web-app-hook Now Building: [:bar] " +
+          package.projectName +
+          "  Now Building: [:bar] " +
           chalk.green.bold(":percent") +
           " (:elapsed seconds)",
         clear: false,
@@ -128,7 +129,6 @@ module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
   plugins.push(
     new MiniCssExtractPlugin({
       filename: "static/css/index.css",
-      // chunkFilename: "[id].css",
       ignoreOrder: false,
     })
   );

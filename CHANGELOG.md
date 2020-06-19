@@ -101,3 +101,23 @@ npm install --save @babel/core@7.10.2 @babel/preset-env@7.10.2 @babel/runtime@7.
 ```  
 2. 处理无法再css中引入url()路径为字体文件的bug
 3. package.json版本固定,移除部分无用依赖,减少node_modules体积
+
+##  "version": "1.1.1"
+2020年06月09日10:12:56
+1. 相关依赖项升级,执行脚本:
+```
+npm install --save antd@4.3.3 less@3.11.3 
+npm install --save-dev terser-webpack-plugin@3.0.3 
+```
+2. 移除redux,并不再对redux做技术支持.
+3. 增加/src/view/data 文件夹,用来存放默认数据和接口请求
+
+##  "version": "1.1.2"
+2020年06月17日16:14:40
+1. 相关依赖项升级,执行脚本:
+```
+    npm install --save antd@4.3.4 less-loader@6.1.1 css-loader@3.6.0
+    npm install --save-dev terser-webpack-plugin@3.0.5 chalk@4.1.0
+```
+2.  打包逻辑优化,打包后自动生成带随机数的zip压缩包
+3.  package.json中,需要增加projectName字段

@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-03-17 09:52:08
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-05-29 15:13:18
+ * @Last Modified time: 2020-06-09 17:24:35
  */
 
 import React, { createContext } from "react";
@@ -10,16 +10,21 @@ import zhCN from "antd/lib/locale-provider/zh_CN";
 import RouterRelation from "../router/router-index";
 import PerformanceMonitor from "./public-monitor";
 import Antd from "antd";
-// import { createStore, applyMiddleware } from "redux";
-// import { Provider } from "react-redux";
 // import thunk from "redux-thunk";
-// import allReducers from "../../redux/index.reducer";
 // import {
 //   registerMessageEvent,
 //   removeMessageEvent,
 // } from "../../util/plugin-cross-platform";
-// const store = createStore(allReducers, applyMiddleware(thunk));
 
+import { setConfig } from "./../../util/request";
+
+setConfig(
+  "http://10.20.5.191:12210/issre",
+  "1E1FEECBD5A04CB2AD9AA1312766812F",
+  "51010000010001"
+);
+
+// public/heartbeat;
 export const Context = createContext({});
 
 export default function App() {
