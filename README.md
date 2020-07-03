@@ -3,15 +3,11 @@
  
 `npm run dev`
    
-    以开发模式启动项目,默认在3000端口,在package.json的port字段可以修改启动端口.
+    以开发模式启动项目,默认在4000端口,在package.json的port字段可以修改启动端口.
 
 `npm run build`
 
-    构建生成环境适用的build程序包,并执行压缩.
-
-`npm run build:nozip`
-
-    仅构建生产环境适用的build程序包.
+    构建生成环境适用的build安装包.
 
 `npm run analyze`
 
