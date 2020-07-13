@@ -129,3 +129,12 @@ npm install --save-dev terser-webpack-plugin@3.0.3
     npm install --save @babel/core@7.10.4 @babel/plugin-proposal-class-properties@7.10.4 @babel/polyfill@7.10.4 @babel/preset-env@7.10.4 @babel/preset-react@7.10.4 @babel/register@7.10.4 @babel/runtime@7.10.4 @babel/runtime-corejs3@7.10.4 less-loader@6.1.3 antd@4.4.0 babel-jest@26.1.0 jest@26.1.0 sass-loader@9.0.0 
     npm install --save-dev @babel/plugin-proposal-decorators@7.10.4 @babel/plugin-transform-modules-commonjs@7.10.4 @babel/plugin-transform-runtime@7.10.4 terser-webpack-plugin@3.0.6 webpack-cli@3.3.12
 ```
+
+##  "version": "1.1.4"
+2020年07月13日09:22:49
+1. 相关依赖项升级,执行脚本:
+```
+    npm install --save antd@4.4.2 sass-loader@9.0.2 jsdom@16.3.0 less-loader@6.2.0
+    npm install --save-dev lodash@4.17.19
+```
+ 
