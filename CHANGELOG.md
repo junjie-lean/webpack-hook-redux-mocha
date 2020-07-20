@@ -138,3 +138,19 @@ npm install --save-dev terser-webpack-plugin@3.0.3
     npm install --save-dev lodash@4.17.19
 ```
  
+##  "version": "1.2.0"
+2020年07月16日16:43:54
+1. 修复babel兼容性的若干bug.
+2. 增加对otf字体文件的支持.
+3. 相关依赖项升级,执行脚本:
+```
+    npm install --save @babel/core@7.10.5 @babel/register@7.10.5 @babel/runtime@7.10.5 @babel/runtime-corejs3@7.10.5 less@3.12.2 
+    npm install --save-dev @babel/plugin-proposal-decorators@7.10.5 @babel/plugin-transform-runtime@7.10.5 terser-webpack-plugin@3.0.7
+```
+
+##  "version": "1.2.1"
+2020年07月20日10:21:20
+1. 增加对qiankun前端微应用的兼容,项目可作为子应用直接被父应用直接调用.
+2. 修复babel兼容性的若干bug.
+3. 修复IE浏览器兼容性问题若干
+4. 移除.babelrc方式

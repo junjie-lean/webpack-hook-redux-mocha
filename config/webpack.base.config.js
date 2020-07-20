@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-06-01 13:49:00
+ * @Last Modified time: 2020-07-20 10:15:18
  */
 
 /**
@@ -38,6 +38,8 @@ const isMeasure = process.env.MEASURE && process.env.MEASURE === "true";
 const smp = new SpeedMeasurePlugin({
   disable: !isMeasure,
 });
+
+const projectName = require('./../package.json').projectName,;
 
 /* 输出的source-map设置 */
 function setSourceMapAbout(debugLevel) {
@@ -85,15 +87,19 @@ module.exports = smp.wrap({
         ? "static/js/chunk/[name].js" //c.main.hash.js
         : "static/js/chunk/dev.[name].js", //dev.c.main.js
     publicPath: "./",
+    library:`${projectName}-[name]`,
+    libraryTarget:"umd",
+    jsonpFunction: `webpackJsonp_${projectName}`,
   },
   devtool: setSourceMapAbout(debugLevel).devtool,
   stats: setSourceMapAbout(debugLevel).stats,
   module: setDefaultModule({ debugLevel, mode }),
   plugins: setDefaultPlugins({ debugLevel, mode, isOpenAnalyze }),
   devServer: setDevServer({ stats: setSourceMapAbout(debugLevel).stats }),
-  // resolve: {
-  //    mainFields: ["main"],
-  // },
+  resolve: {
+    extensions: [".js", ".jsx", ".mjs", ".json"],
+    mainFields: ["main"],
+  },
   optimization: {
     runtimeChunk: true,
     splitChunks: {
@@ -106,19 +112,18 @@ module.exports = smp.wrap({
           maxAsyncRequests: 5,
           maxInitialRequests: 3,
           automaticNameDelimiter: ".",
-          name: "limit"
+          name: "limit",
           // name: "chunk"
         },
         deps: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
-          name: "deps"
-        }
-      }
+          name: "deps",
+        },
+      },
     },
   },
   performance: {
     hints: false,
   },
-
 });
