@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-20 10:15:18
+ * @Last Modified time: 2020-07-27 10:55:01
  */
 
 /**
@@ -39,7 +39,7 @@ const smp = new SpeedMeasurePlugin({
   disable: !isMeasure,
 });
 
-const projectName = require('./../package.json').projectName,;
+const projectName = require("./../package.json").projectName;
 
 /* 输出的source-map设置 */
 function setSourceMapAbout(debugLevel) {
@@ -87,8 +87,8 @@ module.exports = smp.wrap({
         ? "static/js/chunk/[name].js" //c.main.hash.js
         : "static/js/chunk/dev.[name].js", //dev.c.main.js
     publicPath: "./",
-    library:`${projectName}-[name]`,
-    libraryTarget:"umd",
+    library: `${projectName}-[name]`,
+    libraryTarget: "umd",
     jsonpFunction: `webpackJsonp_${projectName}`,
   },
   devtool: setSourceMapAbout(debugLevel).devtool,

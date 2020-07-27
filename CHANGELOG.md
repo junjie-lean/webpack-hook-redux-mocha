@@ -154,3 +154,12 @@ npm install --save-dev terser-webpack-plugin@3.0.3
 2. 修复babel兼容性的若干bug.
 3. 修复IE浏览器兼容性问题若干
 4. 移除.babelrc方式
+
+
+##  "version": "1.2.2"
+2020年07月27日10:58:21
+1. 修复项目不能启动的bug
+2. 依赖项升级
+3. 编译速度优化
+
+
