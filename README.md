@@ -22,4 +22,17 @@
     执行 /src/test/unit_testing 目录下的单元测试用例,并在项目根路径下同步生成自动化测试覆盖率报告 /coverage
 
 
-    
+# JF-WEB-APP-HOOK VERSION CHANGELOG:
+
+
+## "version": "1.2.3"
+2020年07月29日15:05:22
+1. 相关依赖项升级,执行脚本:
+```
+    npm install --save-dev terser-webpack-plugin@3.0.8 
+    npm install --save antd@4.5.1
+```
+2. 优化报错信息
+3. 增加4个public-*组件,分别是组件渲染监控的profile组件,组件错误降级捕获的errorBoundary组件,组件骨架屏支持的suspense组件,组件加载套件spin
+
+

@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-06-17 16:51:24
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-06-17 17:53:18
+ * @Last Modified time: 2020-07-29 15:56:09
  */
 
 const spawn = require("cross-spawn");
@@ -25,9 +25,14 @@ let option = {
 
 console.log(chalk.hex("#00d684").bold("Build start, please wait..."));
 
-spawn.sync("npx", ["webpack", "--config", "./config/webpack.base.config"], {
-  ...option,
-});
+let res = spawn.sync(
+  "npx",
+  ["webpack", "--config", "./config/webpack.base.config"],
+  {
+    ...option,
+  }
+);
+
 
 console.log(chalk.hex("#00d684").bold("Zip start, please wait..."));
 

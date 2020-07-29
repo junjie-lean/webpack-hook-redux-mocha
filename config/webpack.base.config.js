@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-27 10:55:01
+ * @Last Modified time: 2020-07-29 15:55:02
  */
 
 /**
@@ -26,7 +26,7 @@ const mode =
  * 4输出详细sourceMap,打包构建速度最慢;
  * 不建议修改
  */
-const debugLevel = mode === "production" ? 0 : 3;
+const debugLevel = mode === "production" ? 0 : 4;
 
 /** 是否是bundle分析模式,用来分析bundle依赖是否有问题. */
 const isOpenAnalyze =
@@ -51,17 +51,17 @@ function setSourceMapAbout(debugLevel) {
       break;
     }
     case 2: {
-      devtool = "eval-source-map";
+      devtool = "module-source-map";
       stats = "minimal";
       break;
     }
     case 3: {
-      devtool = "cheap-module-source-map";
+      devtool = "evel-source-map";
       stats = "normal";
       break;
     }
     case 4: {
-      devtool = "source-map";
+      devtool = "module-source-map";
       stats = "verbose";
       break;
     }
@@ -73,7 +73,7 @@ function setSourceMapAbout(debugLevel) {
   return { devtool, stats };
 }
 
-module.exports = smp.wrap({
+let config = {
   mode,
   entry: "./src/index.js",
   output: {
@@ -100,7 +100,13 @@ module.exports = smp.wrap({
     extensions: [".js", ".jsx", ".mjs", ".json"],
     mainFields: ["main"],
   },
-  optimization: {
+  performance: {
+    hints: false,
+  },
+};
+
+if (mode === "production") {
+  config.optimization = {
     runtimeChunk: true,
     splitChunks: {
       cacheGroups: {
@@ -122,8 +128,6 @@ module.exports = smp.wrap({
         },
       },
     },
-  },
-  performance: {
-    hints: false,
-  },
-});
+  };
+}
+module.exports = smp.wrap(config);

@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-20 10:00:17
+ * @Last Modified time: 2020-07-29 15:54:24
  */
 
 /**
@@ -96,6 +96,9 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
               legacy: true,
             },
           ],
+          // (() => {
+          //   return mode === "production" ? null : ["transform-react-jsx"];
+          // })(),
         ],
       },
     },
@@ -198,8 +201,6 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     test: /.jsx?$/,
     use: "happypack/loader?id=happyPackerJs",
     exclude: /node_modules/,
-    verbose: false,
-    threads: os.cpus().length,
   };
 
   rules.push(
@@ -209,7 +210,7 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     lessLoader,
     rawLoader,
     urlLoader,
-    fontLoader
+    fontLoader,
     // markdownLoader,
     // happypackLoader
   );

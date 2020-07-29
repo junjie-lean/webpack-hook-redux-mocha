@@ -2,16 +2,15 @@
  * @Author: junjie.lean
  * @Date: 2020-03-17 09:52:08
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-28 10:01:59
+ * @Last Modified time: 2020-07-29 14:52:00
  */
 
 import React, { createContext } from "react";
 import zhCN from "antd/lib/locale-provider/zh_CN";
 import RouterRelation from "../router/router-index";
-import PerformanceMonitor from "./public-monitor";
+import ProfilerMoniter from "./public-profile";
 import Antd from "antd";
 
-import { setConfig } from "./../../util/request";
 
 export const Context = createContext({});
 
@@ -26,12 +25,12 @@ export default function App() {
   };
 
   return (
-    <PerformanceMonitor>
-      <Antd.ConfigProvider locale={zhCN}>
-        <Context.Provider value={store}>
+    <Antd.ConfigProvider locale={zhCN}>
+      <Context.Provider value={store}>
+        <ProfilerMoniter id="react-root-app" open={true}>
           <RouterRelation />
-        </Context.Provider>
-      </Antd.ConfigProvider>
-    </PerformanceMonitor>
+        </ProfilerMoniter>
+      </Context.Provider>
+    </Antd.ConfigProvider>
   );
 }

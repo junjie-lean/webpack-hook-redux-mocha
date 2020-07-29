@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-06-17 17:58:40
+ * @Last Modified time: 2020-07-29 15:53:51
  */
 
 /**
@@ -76,29 +76,11 @@ module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
   plugins.push(
     new HtmlWebpackPlugin({
       title: "webpack-app",
-      // template: paths.template
       template: "public/index.html",
     })
   );
+
   if (mode !== "development") {
-    // 混淆编译插件;
-    // 对编译有极大的性能影响,开发模式切勿启用
-
-    //单线程式编译模式
-    // plugins.push(
-    //   new UglifyJsPlugin({
-    //     exclude: /node_modules/,
-    //     cache: true,
-    //     sourceMap: debugLevel > 0,
-    //     uglifyOptions: {
-    //       output: {
-    //         // comments: true,
-    //         // beautify: false
-    //       }
-    //     }
-    //   })
-    // );
-
     //多线程式编译模式
     plugins.push(
       new ParallelUglifyPlugin({
