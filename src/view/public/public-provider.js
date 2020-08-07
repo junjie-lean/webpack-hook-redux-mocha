@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-03-17 09:52:08
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-29 14:52:00
+ * @Last Modified time: 2020-08-07 11:02:56
  */
 
 import React, { createContext } from "react";
@@ -27,7 +27,7 @@ export default function App() {
   return (
     <Antd.ConfigProvider locale={zhCN}>
       <Context.Provider value={store}>
-        <ProfilerMoniter id="react-root-app" open={true}>
+        <ProfilerMoniter id="react-root-app" open={false}>
           <RouterRelation />
         </ProfilerMoniter>
       </Context.Provider>

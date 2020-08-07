@@ -24,15 +24,15 @@
 
 # JF-WEB-APP-HOOK VERSION CHANGELOG:
 
+## "version": "1.2.4"
+2020年08月07日10:56:56
+1. 修改单元测试的配置,优化单元测试的开发方式
+2. 依赖项升级
+```
+    npm install --save antd@4.5.2 sass-loader@9.0.3 webpack@4.44.1 @babel/core@7.11.1 @babel/preset-env@7.11.0 @babel/runtime@7.11.2 css-loader@4.2.1 jest@26.2.2  
+    npm install --save-dev @babel/plugin-transform-runtime@7.11.0 terser-webpack-plugin@4.0.0
 
-## "version": "1.2.3"
-2020年07月29日15:05:22
-1. 相关依赖项升级,执行脚本:
 ```
-    npm install --save-dev terser-webpack-plugin@3.0.8 
-    npm install --save antd@4.5.1
-```
-2. 优化报错信息
-3. 增加4个public-*组件,分别是组件渲染监控的profile组件,组件错误降级捕获的errorBoundary组件,组件骨架屏支持的suspense组件,组件加载套件spin
+3. 优化profile组件
 
 

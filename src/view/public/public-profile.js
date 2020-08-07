@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-07-28 17:05:12
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-29 13:39:32
+ * @Last Modified time: 2020-08-07 11:09:36
  */
 
 /**
@@ -30,7 +30,7 @@ export default ({ children, open, id, callback }) => {
       console.log(
         `
         组件id:${id},
-        渲染方式:${phase},
+        渲染方式:${phase == "update" ? "更新" : "挂载"},
         渲染耗时:${Math.round(actualDuration * 1000)}μs
         `
       );
