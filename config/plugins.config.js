@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-29 15:53:51
+ * @Last Modified time: 2020-08-10 10:54:31
  */
 
 /**
@@ -33,20 +33,20 @@ module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
   }
 
   //自动引入
-  plugins.push(
-    new webpack.ProvidePlugin({
-      React: "react",
-      F: ["react", "Fragment"],
-      useEffect: ["react", "useEffect"],
-      useMemo: ["react", "useMemo"],
-      useState: ["react", "useState"],
-      useLayoutEffect: ["react", "useLayoutEffect"],
-      useCallback: ["react", "useCallback"],
-      useRef: ["react", "useRef"],
-      _: "lodash",
-      // Antd: "antd",
-    })
-  );
+  // plugins.push(
+  //   new webpack.ProvidePlugin({
+  //     React: "react",
+  //     F: ["react", "Fragment"],
+  //     useEffect: ["react", "useEffect"],
+  //     useMemo: ["react", "useMemo"],
+  //     useState: ["react", "useState"],
+  //     useLayoutEffect: ["react", "useLayoutEffect"],
+  //     useCallback: ["react", "useCallback"],
+  //     useRef: ["react", "useRef"],
+  //     _: "lodash",
+  //     // Antd: "antd",
+  //   })
+  // );
 
   //hmr热更插件
   // plugins.push(

@@ -24,15 +24,11 @@
 
 # JF-WEB-APP-HOOK VERSION CHANGELOG:
 
-## "version": "1.2.4"
-2020年08月07日10:56:56
+## "version": "1.2.5"
+2020年08月10日10:36:02
 1. 修改单元测试的配置,优化单元测试的开发方式
-2. 依赖项升级
+2. 配合单元测试,暂时关闭webpack的自动导入和按需引入功能.
+3. 依赖项升级
 ```
-    npm install --save antd@4.5.2 sass-loader@9.0.3 webpack@4.44.1 @babel/core@7.11.1 @babel/preset-env@7.11.0 @babel/runtime@7.11.2 css-loader@4.2.1 jest@26.2.2  
-    npm install --save-dev @babel/plugin-transform-runtime@7.11.0 terser-webpack-plugin@4.0.0
-
+    npm install --save antd@4.5.3 enzyme-adapter-react-16@1.15.3 @babel/runtime-corejs3@7.11.2 babel-jest@26.2.2 jsdom@16.4.0
 ```
-3. 优化profile组件
-
-

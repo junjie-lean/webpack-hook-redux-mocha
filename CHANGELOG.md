@@ -185,4 +185,11 @@ npm install --save-dev terser-webpack-plugin@3.0.3
 3. 优化profile组件
 
 
-
+## "version": "1.2.5"
+2020年08月10日10:36:02
+1. 修改单元测试的配置,优化单元测试的开发方式
+2. 配合单元测试,暂时关闭webpack的自动导入和按需引入功能.
+3. 依赖项升级
+```
+    npm install --save antd@4.5.3 enzyme-adapter-react-16@1.15.3 @babel/runtime-corejs3@7.11.2 babel-jest@26.2.2 jsdom@16.4.0
+```
