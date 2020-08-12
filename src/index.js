@@ -9,10 +9,10 @@ import "core-js";
 import React from "react";
 import { render } from "react-dom";
 import App from "./view/public/public-provider";
-import svgs from "!!raw-loader!./media/svg/symbol-defs.svg";
+// import svgs from "!!raw-loader!./media/svg/symbol-defs.svg";
 const DOM = document.getElementById("app");
 document.title = "jf-web-app-hook";
-document.querySelector("#svg").innerHTML += svgs;
+// document.querySelector("#svg").innerHTML += svgs;
 
 if (!window.__POWERED_BY_QIANKUN__) {
   render(<App />, DOM);

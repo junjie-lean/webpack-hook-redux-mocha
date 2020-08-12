@@ -2,12 +2,12 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:47
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-20 09:58:13
+ * @Last Modified time: 2020-08-12 14:47:23
  */
 
+import React, { useEffect, useState, useRef } from "react";
 import "./../../style/index.scss";
 import { Button } from "antd";
-// import SVG from "./../public/public-component-svg";
 import { request as Ajax } from "./../../util/request";
 
 function Home(props) {
