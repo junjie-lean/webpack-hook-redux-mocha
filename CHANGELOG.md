@@ -193,3 +193,12 @@ npm install --save-dev terser-webpack-plugin@3.0.3
 ```
     npm install --save antd@4.5.3 enzyme-adapter-react-16@1.15.3 @babel/runtime-corejs3@7.11.2 babel-jest@26.2.2 jsdom@16.4.0
 ```
+
+## "version": "1.2.6"
+2020年08月17日09:47:55
+1. 依赖项升级
+```
+    npm install --save antd@4.5.4 babel-jest@26.3.0 jest@26.4.0
+    npm install --save-dev lodash@4.17.20 terser-webpack-plugin@4.1.0 
+```
+2. 修复部分初始化报错信息
