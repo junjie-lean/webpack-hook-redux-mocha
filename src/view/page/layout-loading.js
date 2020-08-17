@@ -2,11 +2,12 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:34
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-03-24 13:02:38
+ * @Last Modified time: 2020-08-17 10:57:52
  */
 
 import ReactLoading from "react-loading";
 import React, { useEffect } from "react";
+
 export default function Loading(props) {
   useEffect(() => {
     setTimeout(() => {
@@ -23,12 +24,13 @@ export default function Loading(props) {
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0
+          bottom: 0,
         }}
         className="lean-mask"
       >
         <div style={{ margin: "100px 100px" }}>
-          <span style={{ color: "#fff", margin: "0 0 30px" }}>hello hooks</span>
+          <span style={{ color: "#fff", margin: "0 0 30px" }}>
+          </span>
           <br />
           <br />
           <br />
@@ -41,7 +43,7 @@ export default function Loading(props) {
           style={{
             position: "fixed",
             bottom: 20,
-            right: 62
+            right: 62,
           }}
         >
           <ReactLoading

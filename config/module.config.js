@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-08-07 10:49:41
+ * @Last Modified time: 2020-08-17 11:04:00
  */
 
 /**
@@ -164,20 +164,25 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     test: /\.less$/i,
     // include: [/[\\/]node_modules[\\/].*antd/],
     use: [
-      MiniCssExtractPlugin.loader, // replaces extract text plugin in webpack 4
-      "css-loader",
+      // MiniCssExtractPlugin.loader, // replaces extract text plugin in webpack 4
+      "style-loader",
+      "css-loader", // translates CSS into CommonJS
+      // {
+      //   loader: "postcss-loader",
+      //   options: {
+      //     config: {
+      //       path: "./config/postcss.config.js",
+      //     },
+      //   },
+      // },
       {
-        loader: "postcss-loader",
-        options: {
-          config: {
-            path: "./config/postcss.config.js",
-          },
-        },
-      },
-      {
-        loader: "less-loader",
+        loader: "less-loader", // compiles Less to CSS
         options: {
           lessOptions: {
+            // modifyVars: {
+            //   "primary-color": "#3bbc6e",
+            //   "border-radius-base": "2px",
+            // },
             javascriptEnabled: true,
           },
         },
@@ -210,7 +215,7 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     lessLoader,
     rawLoader,
     urlLoader,
-    fontLoader,
+    fontLoader
     // markdownLoader,
     // happypackLoader
   );

@@ -29,6 +29,6 @@
 1. 依赖项升级
 ```
     npm install --save antd@4.5.4 babel-jest@26.3.0 jest@26.4.0
-    npm install --save-dev lodash@4.17.20 terser-webpack-plugin@4.1.0  
+    npm install --save-dev lodash@4.17.20 terser-webpack-plugin@4.1.0 mini-css-extract-plugin@0.10.0
 ```
 2. 修复部分初始化报错信息

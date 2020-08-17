@@ -2,13 +2,12 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:47
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-08-12 14:47:23
+ * @Last Modified time: 2020-08-17 11:03:52
  */
 
 import React, { useEffect, useState, useRef } from "react";
 import "./../../style/index.scss";
 import { Button } from "antd";
-import { request as Ajax } from "./../../util/request";
 
 function Home(props) {
   const [stringSource] = useState("  Write nothing, deploy nowhere...");
