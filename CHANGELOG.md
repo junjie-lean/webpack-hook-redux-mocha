@@ -202,3 +202,20 @@ npm install --save-dev terser-webpack-plugin@3.0.3
     npm install --save-dev lodash@4.17.20 terser-webpack-plugin@4.1.0 
 ```
 2. 修复部分初始化报错信息
+
+
+## "version": "1.2.7:
+2020年09月03日10:01:51
+1. 依赖项升级
+```
+    npm install --save @babel/core@7.11.5 @babel/preset-env@7.11.5 css-loader@4.2.2 enzyme-adapter-react-16@1.15.4 jest@26.4.2 @babel/polyfill@7.11.5 @babel/register@7.11.5 antd@4.6.2 file-loader@6.1.0 html-loader@1.3.0 html-webpack-plugin@4.4.1 less-loader@7.0.0 sass-loader@10.0.1 axios@0.20.0
+    npm install --save-dev @babel/plugin-transform-runtime@7.11.5 optimize-css-assets-webpack-plugin@5.0.4 mini-css-extract-plugin@0.11.0
+``` 
+
+## "version": "1.2.8":
+2020年09月14日10:06:16
+1. 依赖项升级
+```
+    npm install --save antd@4.6.4 less-loader@7.0.1 sass-loader@10.0.2 css-loader@4.3.0 postcss-loader@4.0.1
+    npm install --save-dev terser-webpack-plugin@4.2.0 mini-css-extract-plugin@0.11.2
+```

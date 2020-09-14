@@ -24,11 +24,10 @@
 
 # JF-WEB-APP-HOOK VERSION CHANGELOG:
 
-## "version": "1.2.6"
-2020年08月17日09:47:55
+## "version": "1.2.8":
+2020年09月14日10:06:16
 1. 依赖项升级
 ```
-    npm install --save antd@4.5.4 babel-jest@26.3.0 jest@26.4.0
-    npm install --save-dev lodash@4.17.20 terser-webpack-plugin@4.1.0 mini-css-extract-plugin@0.10.0
+    npm install --save antd@4.6.4 less-loader@7.0.1 sass-loader@10.0.2 css-loader@4.3.0 postcss-loader@4.0.1
+    npm install --save-dev terser-webpack-plugin@4.2.0 mini-css-extract-plugin@0.11.2
 ```
-2. 修复部分初始化报错信息

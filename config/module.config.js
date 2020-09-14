@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-08-17 11:04:00
+ * @Last Modified time: 2020-09-03 10:10:40
  */
 
 /**
@@ -108,15 +108,15 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     test: /\.(scss|css)$/i,
     use: [
       "style-loader",
-      {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          publicPath: "../../",
-          hmr: process.env.NODE_ENV == "development",
-          reloadAll: true,
-          esModule: true,
-        },
-      },
+      // {
+      //   loader: MiniCssExtractPlugin.loader,
+      //   options: {
+      //     publicPath: "../../",
+      //     hmr: process.env.NODE_ENV == "development",
+      //     reloadAll: true,
+      //     esModule: true,
+      //   },
+      // },
       {
         loader: "css-loader",
         options: {
@@ -164,7 +164,6 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     test: /\.less$/i,
     // include: [/[\\/]node_modules[\\/].*antd/],
     use: [
-      // MiniCssExtractPlugin.loader, // replaces extract text plugin in webpack 4
       "style-loader",
       "css-loader", // translates CSS into CommonJS
       // {
