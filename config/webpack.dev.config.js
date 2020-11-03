@@ -17,6 +17,9 @@ module.exports.setDevServer = function (defaultConfig = {}) {
     ...defaultConfig,
     contentBase: path.join(__dirname, "..", "public"),
     port: require("./../package").port,
+     headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
     hot: true,
     watchContentBase: true,
     watchOptions: {
