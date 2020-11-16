@@ -2,12 +2,13 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:47
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-08-17 11:03:52
+ * @Last Modified time: 2020-11-16 10:57:09
  */
 
 import React, { useEffect, useState, useRef } from "react";
 import "./../../style/index.scss";
 import { Button } from "antd";
+import { useSelector } from "react-redux";
 
 function Home(props) {
   const [stringSource] = useState("  Write nothing, deploy nowhere...");
@@ -27,6 +28,12 @@ function Home(props) {
     return () => {
       clearInterval(timer.current);
     };
+  }, []);
+
+  let reduxProps = useSelector((state) => state);
+
+  useEffect(() => {
+    console.log(reduxProps);
   }, []);
 
   return (

@@ -1,6 +1,22 @@
-### 命令行支持:
+# JF-WEB-APP-HOOK LATEST VERSION CHANGELOG:
 
- 
+
+## "version": "1.3.1"
+2020年11月16日09:50:16
+1. HTML文件增加DNS预解析元数据,该操作会有效的减少在以域名为部署方式时的渲染时间(Js code split);
+2. 取消react useContext的数据存储方式,恢复react-redux状态管理机制,并增加redux-persist,使之在刷新时能保存redux的当前状态值;
+3. 依赖项升级
+```
+npm install --save react-redux redux-persist
+npm install --save @babel/preset-react@7.12.5 @babel/runtime@7.12.5 @babel/runtime-corejs3@7.12.5 babel-jest@26.6.3 jest@26.6.3 babel-loader@8.2.1 core-js@3.7.0 less-loader@7.1.0 sass-loader@10.1.0 
+npm install --save-dev @svgr/webpack@5.5.0 mini-css-extract-plugin@1.3.1 
+```
+4. 移除部分废弃依赖项;
+5. 优化qiankun micro app作为主应用和子应用的兼容性;
+
+
+## 命令行支持:
+   
 `npm run dev`
    
     以开发模式启动项目,默认在4000端口,在package.json的port字段可以修改启动端口.
@@ -22,18 +38,3 @@
     执行 /src/test/unit_testing 目录下的单元测试用例,并在项目根路径下同步生成自动化测试覆盖率报告 /coverage
 
 
-# JF-WEB-APP-HOOK LATEST VERSION CHANGELOG:
-
-## "version": "1.3.0" 
-2020年11月02日14:22:15
-1. 依赖项升级
-```
-npm install --save enzyme-adapter-react-16@1.15.5 html-loader@1.3.2 less-loader@7.0.2 postcss-loader@4.0.4 raw-loader@4.0.2 sass-loader@10.0.4 url-loader@4.1.1 @babel/core@7.12.3 @babel/plugin-proposal-class-properties@7.12.1 @babel/polyfill@7.12.1 @babel/preset-env@7.12.1 @babel/preset-react@7.12.1 @babel/register@7.12.1 @babel/runtime@7.12.1 @babel/runtime-corejs3@7.12.1 antd@4.7.3 babel-jest@26.6.1 file-loader@6.2.0 html-webpack-plugin@4.5.0 jest@26.6.1 css-loader@5.0.0 markdown-loader@6.0.0 node-sass@5.0.0 postcss-import@13.0.0 react@17.0.1 react-dom@17.0.1 react-test-renderer@17.0.1 style-loader@2.0.0 webpack@5.3.2 axios@0.21.0
-
-npm install --save-dev babel-plugin-import@1.13.1 @babel/plugin-proposal-decorators@7.12.1 @babel/plugin-syntax-class-properties@7.12.1 @babel/plugin-transform-modules-commonjs@7.12.1 @babel/plugin-transform-runtime@7.12.1 webpack-bundle-analyzer@3.9.0 mini-css-extract-plugin@1.2.1 react-dev-utils@11.0.0 terser-webpack-plugin@5.0.3 webpack-cli@4.1.0
-```
-2. bug修复
-    - 修复在微应用架构中作为子应用不兼容的跨域问题
-    - 其他优化
-2. 重要说明:  
-   此次版本升级有底层框架重大版本的升级(webpack4 => webpack5, react16 => react17),需谨慎升级.

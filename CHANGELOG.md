@@ -233,3 +233,18 @@ npm install --save-dev babel-plugin-import@1.13.1 @babel/plugin-proposal-decorat
     - 其他优化
 2. 重要说明:  
    此次版本升级有底层框架重大版本的升级(webpack4 => webpack5, react16 => react17),需谨慎升级.
+
+
+
+## "version": "1.3.1"
+2020年11月16日09:50:16
+1. HTML文件增加DNS预解析元数据,该操作会有效的减少在以域名为部署方式时的渲染时间(Js code split);
+2. 取消react useContext的数据存储方式,恢复react-redux状态管理机制,并增加redux-persist,使之在刷新时能保存redux的当前状态值;
+3. 依赖项升级
+```
+npm install --save react-redux redux-persist
+npm install --save @babel/preset-react@7.12.5 @babel/runtime@7.12.5 @babel/runtime-corejs3@7.12.5 babel-jest@26.6.3 jest@26.6.3 babel-loader@8.2.1 core-js@3.7.0 less-loader@7.1.0 sass-loader@10.1.0 
+npm install --save-dev @svgr/webpack@5.5.0 mini-css-extract-plugin@1.3.1 
+```
+4. 移除部分废弃依赖项;
+5. 优化qiankun micro app作为主应用和子应用的兼容性;

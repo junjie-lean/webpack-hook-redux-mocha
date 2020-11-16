@@ -12,7 +12,7 @@
 
 body {
   margin: 0;
-  padding: 3px;
+  // padding: 3px;
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif; */
@@ -60,7 +60,7 @@ code {
     bottom: 0;
     right: 0;
     content: "";
-    filter: grayscale(1);
+    // filter: grayscale(1);
     z-index: -1;
   }
 }
