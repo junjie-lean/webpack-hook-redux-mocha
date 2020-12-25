@@ -1,18 +1,17 @@
 # JF-WEB-APP-HOOK LATEST VERSION CHANGELOG:
 
 
-## "version": "1.3.1"
-2020年11月16日09:50:16
-1. HTML文件增加DNS预解析元数据,该操作会有效的减少在以域名为部署方式时的渲染时间(Js code split);
-2. 取消react useContext的数据存储方式,恢复react-redux状态管理机制,并增加redux-persist,使之在刷新时能保存redux的当前状态值;
-3. 依赖项升级
+## "version": "1.3.2"
+2020年12月25日15:48:07
+1. 依赖项升级
 ```
-npm install --save react-redux redux-persist
-npm install --save @babel/preset-react@7.12.5 @babel/runtime@7.12.5 @babel/runtime-corejs3@7.12.5 babel-jest@26.6.3 jest@26.6.3 babel-loader@8.2.1 core-js@3.7.0 less-loader@7.1.0 sass-loader@10.1.0 
-npm install --save-dev @svgr/webpack@5.5.0 mini-css-extract-plugin@1.3.1 
+npm install --save @babel/core@7.12.10 @babel/preset-env@7.12.11 @babel/preset-react@7.12.10 @babel/register@7.12.10 antd@4.9.4 core-js@3.8.1 babel-plugin-module-resolver@4.1.0 less-loader@7.2.0 axios@0.21.1
+npm install --save-dev @babel/plugin-proposal-decorators@7.12.12 @babel/plugin-transform-runtime@7.12.10 mini-css-extract-plugin@1.3.3
 ```
-4. 移除部分废弃依赖项;
-5. 优化qiankun micro app作为主应用和子应用的兼容性;
+2. 降级webpack和webpack-dev-server,来兼容IE浏览器
+3. 降级react到16.x
+4. 增加useSyncState方法,用来进行同步的setState
+5. 增加jsconfig.json,优化编辑器对类组件的装饰器的显示兼容性
 
 
 ## 命令行支持:

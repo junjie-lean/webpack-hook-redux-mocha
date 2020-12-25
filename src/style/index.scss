@@ -1,14 +1,14 @@
 @import "~antd/dist/antd.css";
 
-@font-face {
-  font-family: "FZY4K";
-  src: url("./../media/font/FZY4K.ttf");
-}
+// @font-face {
+//   font-family: "FZY4K";
+//   src: url("./../media/font/FZY4K.ttf");
+// }
 
-@font-face {
-  font-family: "BGOTHL";
-  src: url("./../media/font/BGOTHL.ttf");
-}
+// @font-face {
+//   font-family: "BGOTHL";
+//   src: url("./../media/font/BGOTHL.ttf");
+// }
 
 body {
   margin: 0;
@@ -44,25 +44,24 @@ code {
       font-size: 20px;
     }
   }
-  > div:last-child {
-    text-align: right;
-  }
+
   .lean-homeCursor {
     animation: toggle 0.7s infinite;
   }
-  &:after {
-    background-image: url("./../media/picture/bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    content: "";
-    // filter: grayscale(1);
-    z-index: -1;
-  }
+
+  // &:after {
+  //   background-image: url("./../media/picture/bg.jpg");
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   bottom: 0;
+  //   right: 0;
+  //   content: "";
+  //   // filter: grayscale(1);
+  //   z-index: -1;
+  // }
 }
 
 @keyframes toggle {

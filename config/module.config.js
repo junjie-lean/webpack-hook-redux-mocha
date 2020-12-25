@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-09-03 10:10:40
+ * @Last Modified time: 2020-12-23 17:31:49
  */
 
 /**
@@ -51,7 +51,13 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
         ],
         plugins: [
           "@babel/plugin-syntax-dynamic-import",
-          "@babel/plugin-proposal-class-properties",
+          [
+            "@babel/plugin-proposal-decorators",
+            {
+              legacy: true,
+            },
+          ],
+          ["@babel/plugin-proposal-class-properties", { loose: true }],
           ["@babel/plugin-syntax-class-properties", { loose: true }],
           [
             "import",
@@ -64,24 +70,9 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
             "antd",
           ],
           [
-            "import",
-            {
-              libraryName: "lodash",
-              libraryDirectory: "",
-              camel2DashComponentName: false,
-            },
-            "lodash",
-          ],
-          [
             "module-resolver",
             {
               extensions: [".js", ".jsx"],
-            },
-          ],
-          [
-            "@babel/plugin-transform-runtime",
-            {
-              corejs: "3",
             },
           ],
           [
@@ -91,11 +82,12 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
             },
           ],
           [
-            "@babel/plugin-proposal-decorators",
+            "@babel/plugin-transform-runtime",
             {
-              legacy: true,
+              corejs: "3",
             },
           ],
+
           // (() => {
           //   return mode === "production" ? null : ["transform-react-jsx"];
           // })(),

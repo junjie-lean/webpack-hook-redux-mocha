@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-03-17 09:52:08
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-11-16 10:40:12
+ * @Last Modified time: 2020-11-23 14:22:47
  */
 
 import React from "react";
@@ -18,6 +18,8 @@ import reducers from "./../../redux/index.reducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storageLocal from "redux-persist/lib/storage";
 import storageSession from "redux-persist/lib/storage/session";
+import hardSet from "redux-persist/lib/stateReconciler/hardSet";
+import autoMergeLevel1 from "redux-persist/lib/stateReconciler/autoMergeLevel1";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -25,11 +27,16 @@ const ContextProvider = (props) => {
   //redux同步机制
   //利用redux-persist持久化本地数据,使刷新页面后,redux状态值不丢失.
   const persistConfig = {
-    key: "root",
-    storage: storageSession,
+    key: "root", // sessionStorage中的唯一key,在微应用开发模式中需保持唯一
+    storage: storageSession, //storage存储方式,建议采用sessionStorage
     // storage: storageLocal,
-    stateReconciler: autoMergeLevel2, // 查看 'Merge Process' 部分的具体情况
+    // stateReconciler: hardSet, // 刷新后采用最新的状态,抛弃已存在的状态
+    // stateReconciler: autoMergeLevel1, // 刷新后采用最新的状态,已存在的状态则合并
+    stateReconciler: autoMergeLevel2, // 刷新后递归合并刷新的状态,已存在的状态则合并
+    // blacklist: [], // 不缓存黑名单内部的key
+    // whitelist: [], // 仅缓存白名单内的key
   };
+
   const myPersistReducer = persistReducer(persistConfig, reducers);
 
   //redux中间件处理.

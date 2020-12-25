@@ -248,3 +248,16 @@ npm install --save-dev @svgr/webpack@5.5.0 mini-css-extract-plugin@1.3.1
 ```
 4. 移除部分废弃依赖项;
 5. 优化qiankun micro app作为主应用和子应用的兼容性;
+
+
+## "version": "1.3.2"
+2020年12月25日15:48:07
+1. 依赖项升级
+```
+npm install --save @babel/core@7.12.10 @babel/preset-env@7.12.11 @babel/preset-react@7.12.10 @babel/register@7.12.10 antd@4.9.4 core-js@3.8.1 babel-plugin-module-resolver@4.1.0 less-loader@7.2.0 axios@0.21.1
+npm install --save-dev @babel/plugin-proposal-decorators@7.12.12 @babel/plugin-transform-runtime@7.12.10 mini-css-extract-plugin@1.3.3
+```
+2. 降级webpack和webpack-dev-server,来兼容IE浏览器
+3. 降级react到16.x
+4. 增加useSyncState方法,用来进行同步的setState
+5. 增加jsconfig.json,优化编辑器对类组件的装饰器的显示兼容性

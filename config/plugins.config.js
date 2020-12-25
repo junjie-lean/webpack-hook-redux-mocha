@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-08-10 10:54:31
+ * @Last Modified time: 2020-12-23 15:29:44
  */
 
 /**
@@ -118,22 +118,22 @@ module.exports.setDefaultPlugins = function (config = {}, defaultPlugin = []) {
   //多线程处理js插件
   //可也以用来处理less、sass等预编译处理器
   //如果项目较简单，对构建项目的速度提升不大
-  plugins.push(
-    new HappyPack({
-      id: "happyPackerJs",
-      // debug: true,
-      verbose: false,
-      loaders: [
-        {
-          loader: "babel-loader",
-          query: {
-            presets: ["@babel/react", "@babel/env"],
-          },
-        },
-      ],
-      threadPool: threadPool,
-    })
-  );
+  // plugins.push(
+  //   new HappyPack({
+  //     id: "happyPackerJs",
+  //     // debug: true,
+  //     verbose: false,
+  //     loaders: [
+  //       {
+  //         loader: "babel-loader",
+  //         query: {
+  //           presets: ["@babel/react", "@babel/env"],
+  //         },
+  //       },
+  //     ],
+  //     threadPool: threadPool,
+  //   })
+  // );
 
   return plugins;
 };

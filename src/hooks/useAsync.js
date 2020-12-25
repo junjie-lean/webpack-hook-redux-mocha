@@ -2,7 +2,10 @@
  * @Author: junjie.lean
  * @Date: 2020-08-12 15:13:14
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-08-12 15:14:55
+ * @Last Modified time: 2020-12-21 16:17:04
+ */
+/**
+ * @description 基于promise的状态管理
  */
 
 import React, { useEffect, useCallback } from "react";

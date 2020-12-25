@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 15:41:40
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-11-03 09:38:42
+ * @Last Modified time: 2020-12-23 15:49:46
  */
 
 /**
@@ -26,7 +26,7 @@ module.exports.setDevServer = function (defaultConfig = {}) {
       ignored: path.join(__dirname, "..", "node_modules"),
     },
     publicPath: "/",
-    inline: true,
+    inline: false,
     quiet: true,
     noInfo: true,
     lazy: false,
