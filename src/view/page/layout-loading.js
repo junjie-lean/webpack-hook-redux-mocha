@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:34
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-08-17 10:57:52
+ * @Last Modified time: 2021-04-21 15:59:08
  */
 
 import ReactLoading from "react-loading";
@@ -12,7 +12,9 @@ export default function Loading(props) {
   useEffect(() => {
     setTimeout(() => {
       props.history.push("/home");
-    }, 3000);
+    }, 2000);
+    // console.log("token:", getQueryString("token"));
+    // console.log("orgCode:", getQueryString("orgcode"));
   }, []);
 
   return (
@@ -29,8 +31,7 @@ export default function Loading(props) {
         className="lean-mask"
       >
         <div style={{ margin: "100px 100px" }}>
-          <span style={{ color: "#fff", margin: "0 0 30px" }}>
-          </span>
+          <span style={{ color: "#fff", margin: "0 0 30px" }}></span>
           <br />
           <br />
           <br />

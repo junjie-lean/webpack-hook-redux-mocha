@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-04-16 12:59:32
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-11-18 16:16:41
+ * @Last Modified time: 2020-12-29 09:55:47
  */
 
 /**
@@ -58,6 +58,8 @@ const getQueryString = name => {
   if (r != null) return unescape(r[2]);
   return null;
 };
+
+
 
 /**
  *

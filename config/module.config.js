@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-12-23 17:31:49
+ * @Last Modified time: 2021-04-21 12:44:49
  */
 
 /**
@@ -39,8 +39,8 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
             {
               // spec: false, //是否启用更为规范的转换
               // debug: false,
-              useBuiltIns: "entry", //入口文件出注入polyfill
-              // useBuiltIns: "usage", //按需加入polyfill
+              useBuiltIns: "usage", //入口文件出注入polyfill
+              // useBuiltIns: "usage", //按需自动加入polyfill
               targets: {
                 chrome: "58",
                 ie: "11",
@@ -50,7 +50,6 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
           ],
         ],
         plugins: [
-          "@babel/plugin-syntax-dynamic-import",
           [
             "@babel/plugin-proposal-decorators",
             {
@@ -87,10 +86,7 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
               corejs: "3",
             },
           ],
-
-          // (() => {
-          //   return mode === "production" ? null : ["transform-react-jsx"];
-          // })(),
+          "@babel/plugin-syntax-dynamic-import",
         ],
       },
     },

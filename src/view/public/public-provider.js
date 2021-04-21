@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-03-17 09:52:08
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-11-23 14:22:47
+ * @Last Modified time: 2021-03-09 16:49:30
  */
 
 import React from "react";
@@ -57,12 +57,13 @@ const ContextProvider = (props) => {
   );
 };
 
-export default function App() {
+export default function App(props) {
+
   return (
     <ConfigProvider locale={zhCN}>
       <ProfilerMoniter id="react-app-moniter-root" open={false}>
         <ContextProvider>
-          <RouterRelation />
+          <RouterRelation {...props} />
         </ContextProvider>
       </ProfilerMoniter>
     </ConfigProvider>

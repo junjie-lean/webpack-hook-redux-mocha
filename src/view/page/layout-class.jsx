@@ -2,24 +2,34 @@
  * @Author: junjie.lean
  * @Date: 2020-07-16 15:34:02
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-12-25 16:02:20
+ * @Last Modified time: 2021-01-19 15:09:01
  */
 
-import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import { useSyncState } from "./../../hooks/useSyncState";
-import { Button } from "antd";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 
-export default withRouter(() => {
-  const [a, b] = useState(1);
-  const clickHandle = () => {
-    useSyncState(a + 1, b).then((newA) => {
-      console.log(newA);
-    });
-  };
+export default (props) => {
+  const [state, setState] = useState(0);
+
+  useEffect(() => {
+    console.log("useEffect");
+  }, []);
+
+  useLayoutEffect(() => {
+    console.log("useLayoutEffect");
+  }, []);
+
   return (
     <div>
-      <Button onClick={clickHandle}>{a}</Button>
+      <p>state:{state}</p>
+
+      <br />
+      <button
+        onClick={() => {
+          window.location.reload(true);
+        }}
+      >
+        刷新
+      </button>
     </div>
   );
-});
+};

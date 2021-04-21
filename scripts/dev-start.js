@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-01-10 11:06:12
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-07-27 10:45:20
+ * @Last Modified time: 2021-04-21 15:44:58
  */
 
 /**
@@ -24,11 +24,11 @@ let startDevServer = spawn(
 );
 
 startDevServer.stdout.on("data", (data) => {
-  console.log(data.toString());
+  console.log("stdout:", data.toString());
 });
 
 startDevServer.stderr.on("data", (data) => {
-  console.log(data.toString());
+  console.log("error:", data.toString());
 });
 
 startDevServer.on("close", (code) => {

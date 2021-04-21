@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:33:20
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-12-23 17:00:13
+ * @Last Modified time: 2021-04-21 16:38:43
  */
 
 /**
@@ -33,11 +33,11 @@ const isOpenAnalyze =
   process.env.ANALYZE_MODE && process.env.ANALYZE_MODE === "true";
 
 /** 是否启用打包分析模式,用来分析打包过慢的原因 */
-const isMeasure = process.env.MEASURE && process.env.MEASURE === "true";
+// const isMeasure = process.env.MEASURE && process.env.MEASURE === "true";
 
-const smp = new SpeedMeasurePlugin({
-  disable: !isMeasure,
-});
+// const smp = new SpeedMeasurePlugin({
+// disable: !isMeasure,
+// });
 
 const projectName = require("./../package.json").projectName;
 
@@ -61,7 +61,7 @@ function setSourceMapAbout(debugLevel) {
       break;
     }
     case 4: {
-      devtool = "module-source-map";
+      devtool = "eval-source-map";
       stats = "verbose";
       break;
     }
@@ -80,54 +80,50 @@ let config = {
     path: paths.buildPath,
     filename:
       mode == "production"
-        ? "static/js/index.js" //index.js
-        : "static/js/dev.index.js", //dev.b.js
+        ? "static/js/index.[name].[contenthash].js" //index.js
+        : "static/js/dev.[name].index.js", //dev.b.js
     chunkFilename:
       mode == "production"
-        ? "static/js/chunk/[name].js" //c.main.hash.js
+        ? "static/js/chunk/[name].[contenthash].js" //c.main.hash.js
         : "static/js/chunk/dev.[name].js", //dev.c.main.js
     publicPath: "./",
     library: `${projectName}-[name]`,
     libraryTarget: "umd",
-    jsonpFunction: `webpackJsonp_${projectName}`,
+    chunkLoadingGlobal: `webpackJsonp_${projectName}`,
   },
   devtool: setSourceMapAbout(debugLevel).devtool,
-  stats: setSourceMapAbout(debugLevel).stats,
+  // stats: setSourceMapAbout(debugLevel).stats,
+  stats: {
+    // all: false,
+    assets: false,
+  },
   module: setDefaultModule({ debugLevel, mode }),
   plugins: setDefaultPlugins({ debugLevel, mode, isOpenAnalyze }),
   devServer: setDevServer({ stats: setSourceMapAbout(debugLevel).stats }),
-  resolve: {
-    extensions: [".js", ".jsx", ".mjs", ".json"],
-    mainFields: ["main"],
-  },
-  performance: {
-    hints: false,
-  },
+  // resolve: {
+  //   extensions: [".js", ".jsx", ".mjs", ".json"],
+  //   mainFields: ["main"],
+  // },
+  // performance: {
+  //   hints: false,
+  // },
+  ...(mode === "production"
+    ? {
+        optimization: {
+          moduleIds: "deterministic", //打包时关键性依赖包不重新更新hash,比如react这些...
+          runtimeChunk: "single", //为所有chunk 创建一个runtime bundle,而不是每一个文件一个verdors
+          splitChunks: {
+            cacheGroups: {
+              defaultVendors: {
+                test: /[\\/]node_modules[\\/](react|react-dom|antd|lodash|moment|@ant-design|core-js|react-router|react-router-dom|core-js-pure)[\\/]/,
+                name: "static",
+                chunks: "all",
+              },
+            },
+          },
+        },
+      }
+    : {}),
 };
 
-if (mode === "production") {
-  config.optimization = {
-    runtimeChunk: true,
-    splitChunks: {
-      cacheGroups: {
-        common: {
-          chunks: "all",
-          minSize: 1024 * 200,
-          maxSize: 1024 * 244, //大于这个阈值,会尝试分割
-          minChunks: 1,
-          maxAsyncRequests: 5,
-          maxInitialRequests: 3,
-          automaticNameDelimiter: ".",
-          name: "limit",
-          // name: "chunk"
-        },
-        deps: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          name: "deps",
-        },
-      },
-    },
-  };
-}
-module.exports = smp.wrap(config);
+module.exports = config;

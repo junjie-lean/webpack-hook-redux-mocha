@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-01-09 14:17:37
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2020-12-23 15:35:52
+ * @Last Modified time: 2021-03-09 17:15:40
  */
 
 import "core-js/stable";
@@ -11,15 +11,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./view/public/public-provider";
 // import svgs from "!!raw-loader!./media/svg/symbol-defs.svg";
-document.title = "jf-web-app-hook";
+
 // document.querySelector("#svg").innerHTML += svgs;
 
 function render(props = {}) {
-  const DOM = document.getElementById("app");
+  const DOM = document.getElementById("react-hook-app");
   ReactDOM.render(<App {...props} />, DOM);
 }
 
 if (!window.__POWERED_BY_QIANKUN__) {
+  document.title = "jf-web-app-hook";
   render();
 }
 
@@ -32,7 +33,8 @@ export async function bootstrap() {
  */
 export async function mount(props) {
   props.onGlobalStateChange((state) => {
-    render(props);
+    // console.log("global state change:", state);
+    render({ ...props, globalState: state });
   });
   render(props);
 }
@@ -41,7 +43,7 @@ export async function mount(props) {
  * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例
  */
 export async function unmount() {
-  const DOM = document.getElementById("app");
+  const DOM = document.getElementById("react-hook-app");
   ReactDOM.unmountComponentAtNode(DOM);
 }
 
@@ -51,8 +53,3 @@ export async function unmount() {
 export async function update(props) {
   console.log("update props", props);
 }
-
-/**
- * more lifecycle:
- * https://single-spa.js.org/docs/building-applications.html#registered-application-lifecycle
- */

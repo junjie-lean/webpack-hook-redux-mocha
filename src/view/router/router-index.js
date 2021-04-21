@@ -1,4 +1,11 @@
-import React from "react";
+/*
+ * @Author: junjie.lean
+ * @Date: 2021-03-09 14:58:59
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2021-04-21 15:43:50
+ */
+
+import React, { useEffect, useContext } from "react";
 import {
   HashRouter as Router,
   Route,
@@ -6,22 +13,28 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import Loading from "../page/layout-loading";
-import Home from "../page/layout-home";
-import Font from "../page/layout-font";
-import Test from "./../page/layout-class";
+import asyncComponent from "./../public/public-asyncComponent";
 
-export default function RouterRelation() {
+const Loading = asyncComponent(() =>
+  import(
+    /*webpackPerload: true,webpackChunkName :"loading" */ "../page/layout-loading"
+  )
+);
+const Home = asyncComponent(() =>
+  import(
+    /* webpackPerfetch:true,webpackChunkName :"home" */ "../page/layout-home"
+  )
+);
+
+export default function RouterRelation(props) {
   let baseHash = "";
   return (
     <Router basename="/">
       <Switch>
         <Route exact path={baseHash + "/"} component={Loading} />
         <Route path={baseHash + "/loading"} component={Loading} />
-        <Route path={baseHash + "/home"} component={Home} />
-        <Route path={baseHash + "/font"} component={Font} />
-        <Route path={baseHash + "/test"} component={Test} />
-        <Redirect to={baseHash + "/loading"} />
+        <Route path={baseHash + "/home"} render={() => <Home {...props} />} />
+        {/* <Redirect to={baseHash + "/loading"} /> */}
       </Switch>
     </Router>
   );

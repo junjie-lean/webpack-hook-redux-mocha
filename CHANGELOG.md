@@ -261,3 +261,13 @@ npm install --save-dev @babel/plugin-proposal-decorators@7.12.12 @babel/plugin-t
 3. 降级react到16.x
 4. 增加useSyncState方法,用来进行同步的setState
 5. 增加jsconfig.json,优化编辑器对类组件的装饰器的显示兼容性
+
+
+## "version": "1.4.1"
+2021年04月21日16:40:17
+1. 依赖项升级,包含react和webpack的升级,都进行了大版本升级,如果在使用过程中遇到比较棘手的问题,可以回退到上一版本进行开发.(webpack-cli@3)
+2. 添加开发文档记录自动生成方案:
+```
+    npm run doc
+```
+3.打包逻辑优化,现在支持按路由分包方式进行代码切割,进行按需加载.
