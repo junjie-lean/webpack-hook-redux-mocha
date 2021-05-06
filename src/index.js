@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-01-09 14:17:37
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2021-04-27 10:51:12
+ * @Last Modified time: 2021-05-06 10:22:28
  */
 
 import "core-js/stable";
@@ -10,11 +10,10 @@ import "regenerator-runtime/runtime";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./view/public/public-provider";
+import "./style/index.scss";
 // import svgs from "!!raw-loader!./media/svg/symbol-defs.svg";
 
 // document.querySelector("#svg").innerHTML += svgs;
-
-
 
 function render(props = {}) {
   const DOM = document.getElementById("react-hook-app");
