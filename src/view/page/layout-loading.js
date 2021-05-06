@@ -2,36 +2,28 @@
  * @Author: junjie.lean
  * @Date: 2020-03-18 11:00:34
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2021-04-21 15:59:08
+ * @Last Modified time: 2021-04-27 14:07:57
  */
 
 import ReactLoading from "react-loading";
 import React, { useEffect } from "react";
-
+import css from "link-style";
 export default function Loading(props) {
   useEffect(() => {
     setTimeout(() => {
       props.history.push("/home");
     }, 2000);
-    // console.log("token:", getQueryString("token"));
-    // console.log("orgCode:", getQueryString("orgcode"));
+
   }, []);
 
   return (
     <>
       <div
-        style={{
-          position: "fixed",
-          background: "#282c34",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        }}
+        style={css.position("fixed").bg("#282c34").t(0).l(0).r(0).b(0).end}
         className="lean-mask"
       >
-        <div style={{ margin: "100px 100px" }}>
-          <span style={{ color: "#fff", margin: "0 0 30px" }}></span>
+        <div style={css.margin("100px 100px").end}>
+          <span style={css.color("#fff").margin("0 0 30px").end}></span>
           <br />
           <br />
           <br />
@@ -40,13 +32,7 @@ export default function Loading(props) {
 
           <ReactLoading type={"bars"} color="#c0c0c0" />
         </div>
-        <div
-          style={{
-            position: "fixed",
-            bottom: 20,
-            right: 62,
-          }}
-        >
+        <div style={css.position("fixed").b(20).r(60).end}>
           <ReactLoading
             type={"bubbles"}
             color="#fff"

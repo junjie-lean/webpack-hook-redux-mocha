@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2021-03-09 14:58:59
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2021-04-21 15:43:50
+ * @Last Modified time: 2021-04-22 09:59:00
  */
 
 import React, { useEffect, useContext } from "react";
@@ -22,7 +22,7 @@ const Loading = asyncComponent(() =>
 );
 const Home = asyncComponent(() =>
   import(
-    /* webpackPerfetch:true,webpackChunkName :"home" */ "../page/layout-home"
+    /* webpackPerfetch:true,webpackChunkName :"home" */ "../page/layout-home.tsx"
   )
 );
 

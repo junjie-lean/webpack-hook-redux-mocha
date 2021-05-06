@@ -271,3 +271,8 @@ npm install --save-dev @babel/plugin-proposal-decorators@7.12.12 @babel/plugin-t
     npm run doc
 ```
 3.打包逻辑优化,现在支持按路由分包方式进行代码切割,进行按需加载.
+
+
+## "version": "1.4.2"
+2021年04月27日14:04:27
+增加link-style

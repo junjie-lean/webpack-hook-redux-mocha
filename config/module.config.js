@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2021-04-21 12:44:49
+ * @Last Modified time: 2021-04-22 10:00:34
  */
 
 /**
@@ -195,8 +195,21 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     exclude: /node_modules/,
   };
 
+  const tsLoader = {
+    test: /\.tsx?$/,
+    loader: "ts-loader",
+    exclude: /node_modules/,
+    options: {
+      transpileOnly: true, //只编译不检查
+      compilerOptions: {
+        module: "es2015",
+      },
+    },
+  };
+
   rules.push(
     // svgrLoader,
+    tsLoader,
     babelLoader,
     styleLoader,
     lessLoader,

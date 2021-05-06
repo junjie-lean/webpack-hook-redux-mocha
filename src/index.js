@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-01-09 14:17:37
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2021-03-09 17:15:40
+ * @Last Modified time: 2021-04-27 10:51:12
  */
 
 import "core-js/stable";
@@ -13,6 +13,8 @@ import App from "./view/public/public-provider";
 // import svgs from "!!raw-loader!./media/svg/symbol-defs.svg";
 
 // document.querySelector("#svg").innerHTML += svgs;
+
+
 
 function render(props = {}) {
   const DOM = document.getElementById("react-hook-app");

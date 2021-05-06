@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "checkJs": false,
+    "outDir": "./build",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es2015",
+    "target": "es5",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["./src/**/*"]
+}
