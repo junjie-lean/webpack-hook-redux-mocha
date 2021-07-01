@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2020-06-17 16:51:24
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2021-04-28 10:36:54
+ * @Last Modified time: 2021-04-21 13:50:07
  */
 
 const spawn = require("cross-spawn");
@@ -10,7 +10,6 @@ const zipper = require("zip-local");
 const chalk = require("chalk");
 const package = require("./../package");
 const fs = require("fs");
-const moment = require("moment");
 
 process.on("unhandledRejection", (err) => {
   throw err;
@@ -38,11 +37,14 @@ let res = spawn.sync(
 
 console.log(chalk.hex("#00d684").bold("Zip start, please wait..."));
 
-let buildTime = moment(Date.now()).format("MMDDHHmm");
+let hash = "";
+for (let i = 0; i < 10; i++) {
+  hash += Math.floor(Math.random() * 16).toString(16);
+}
 
 let zipName = `build${
-  package.projectName ? "-" + package.projectName + "-v" + package.version : ""
-}-${buildTime}.zip`;
+  package.projectName ? "." + package.projectName : ""
+}.${hash}.zip`;
 
 if (fs.existsSync("./build")) {
   zipper.sync.zip("./build").compress().save(zipName);

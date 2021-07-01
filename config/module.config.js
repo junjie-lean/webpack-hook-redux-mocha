@@ -2,16 +2,16 @@
  * @Author: junjie.lean
  * @Date: 2019-12-19 13:22:01
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2021-04-22 10:00:34
+ * @Last Modified time: 2021-07-01 10:11:21
  */
 
 /**
  * webpack moduleLoader config list
  */
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { resolve } = require("path");
-const os = require("os");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { resolve } = require('path');
+const os = require('os');
 
 module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
   let rules = [...loaderArr];
@@ -19,7 +19,7 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
 
   const rawLoader = {
     test: /\.(txt|svg)$/i,
-    use: "raw-loader",
+    use: 'raw-loader',
     // include: resolve(__dirname, "..", "src"),
   };
 
@@ -27,133 +27,146 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     test: /\.jsx?$/,
     exclude: /node_modules/,
     use: {
-      loader: "babel-loader",
+      loader: 'babel-loader',
       options: {
         cacheDirectory: false,
-        compact: mode === "production",
+        compact: mode === 'production',
         presets: [
           //此配置如果修改，可能需要同步修改happyPack插件的配置,以优化打包构建效率
-          ["@babel/react"],
+          ['@babel/react'],
           [
-            "@babel/env",
+            '@babel/env',
             {
               // spec: false, //是否启用更为规范的转换
               // debug: false,
-              useBuiltIns: "usage", //入口文件出注入polyfill
+              useBuiltIns: 'usage', //入口文件出注入polyfill
               // useBuiltIns: "usage", //按需自动加入polyfill
               targets: {
-                chrome: "58",
-                ie: "11",
+                chrome: '58',
+                ie: '11',
               },
-              corejs: "3",
+              corejs: '3',
             },
           ],
         ],
         plugins: [
           [
-            "@babel/plugin-proposal-decorators",
+            '@babel/plugin-proposal-decorators',
             {
               legacy: true,
             },
           ],
-          ["@babel/plugin-proposal-class-properties", { loose: true }],
-          ["@babel/plugin-syntax-class-properties", { loose: true }],
+          ['@babel/plugin-proposal-class-properties', { loose: false }],
+          ['@babel/plugin-syntax-class-properties', { loose: true }],
           [
-            "import",
+            'import',
             {
-              libraryName: "antd",
-              libraryDirectory: "es",
+              libraryName: 'antd',
+              libraryDirectory: 'es',
               // style: "css"
               style: true,
             },
-            "antd",
+            'antd',
           ],
           [
-            "module-resolver",
+            'module-resolver',
             {
-              extensions: [".js", ".jsx"],
+              extensions: ['.js', '.jsx'],
             },
           ],
           [
-            "@babel/plugin-transform-modules-commonjs",
+            '@babel/plugin-transform-modules-commonjs',
             {
               allowTopLevelThis: true,
             },
           ],
           [
-            "@babel/plugin-transform-runtime",
+            '@babel/plugin-transform-runtime',
             {
-              corejs: "3",
+              corejs: '3',
             },
           ],
-          "@babel/plugin-syntax-dynamic-import",
+          '@babel/plugin-syntax-dynamic-import',
         ],
       },
     },
   };
 
   const styleLoader = {
-    test: /\.(scss|css)$/i,
+    test: /\.(s[ac]|c)ss$/i,
     use: [
-      "style-loader",
-      // {
-      //   loader: MiniCssExtractPlugin.loader,
-      //   options: {
-      //     publicPath: "../../",
-      //     hmr: process.env.NODE_ENV == "development",
-      //     reloadAll: true,
-      //     esModule: true,
-      //   },
-      // },
       {
-        loader: "css-loader",
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath: '../../',
+        },
+      },
+      // 'style-loader',
+      {
+        loader: 'css-loader',
         options: {
           importLoaders: 1,
           modules: { auto: true },
         },
       },
       {
-        loader: "sass-loader",
+        loader: 'sass-loader',
       },
     ],
+  };
+
+  const fileLoader = {
+    test: /\.(mp4|avi)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[contenthash].[ext]',
+          outputPath: 'media',
+        },
+      },
+    ],
+    include: resolve(__dirname, '..', 'src'),
   };
 
   const urlLoader = {
     test: /\.(png|jpg|jpeg|gif)$/i,
     use: [
       {
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
-          limit: 1000 * 1024 * 2, //unit:byte,under this value to transform to base64 code.
-          name: "./static/media/pic/[name].[hash:8].[ext]",
-          // name: "[name].[hash:8].[ext]",
+          limit: 1024 * 700, //unit:byte,under this value to transform to base64 code.
+          name: '[name].[contenthash].[ext]',
+          outputPath: 'media',
+          esModule: false,
         },
       },
     ],
-    include: resolve(__dirname, "..", "src"),
+    include: resolve(__dirname, '..', 'src'),
   };
 
   const fontLoader = {
     test: /.(ttf|eot|woff|otf|woff2)$/i, // ttf|eot|svg|woff|woff2
     use: [
       {
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
-          name: "[name].[hash:8].[ext]",
+          // name: '[name].[hash:8].[ext]',
           limit: 1000 * 1024,
-          name: "./static/media/font/[name].[hash:8].[ext]",
+          name: '[name].[ext]',
+          outputPath: 'font',
         },
       },
     ],
-    include: resolve(__dirname, "..", "src"),
+    include: resolve(__dirname, '..', 'src'),
   };
 
   const lessLoader = {
     test: /\.less$/i,
     // include: [/[\\/]node_modules[\\/].*antd/],
     use: [
-      "style-loader",
-      "css-loader", // translates CSS into CommonJS
+      'style-loader',
+      'css-loader', // translates CSS into CommonJS
       // {
       //   loader: "postcss-loader",
       //   options: {
@@ -163,7 +176,7 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
       //   },
       // },
       {
-        loader: "less-loader", // compiles Less to CSS
+        loader: 'less-loader', // compiles Less to CSS
         options: {
           lessOptions: {
             // modifyVars: {
@@ -181,29 +194,36 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     test: /\.md$/,
     use: [
       {
-        loader: "html-loader",
+        loader: 'html-loader',
       },
       {
-        loader: "markdown-loader",
+        loader: 'markdown-loader',
       },
     ],
   };
 
   const happypackLoader = {
     test: /.jsx?$/,
-    use: "happypack/loader?id=happyPackerJs",
+    use: 'happypack/loader?id=happyPackerJs',
     exclude: /node_modules/,
   };
 
   const tsLoader = {
     test: /\.tsx?$/,
-    loader: "ts-loader",
+    loader: 'awesome-typescript-loader',
     exclude: /node_modules/,
     options: {
-      transpileOnly: true, //只编译不检查
-      compilerOptions: {
-        module: "es2015",
+      useBabel: true,
+      babelOptions: {
+        babelrc: false /* Important line */,
+        // presets: [
+        //   [
+        //     '@babel/preset-env',
+        //     { targets: 'last 2 versions, ie 11', modules: false },
+        //   ],
+        // ],
       },
+      babelCore: '@babel/core', // needed for Babel v7
     },
   };
 
@@ -215,6 +235,7 @@ module.exports.setDefaultModule = function (config = {}, loaderArr = []) {
     lessLoader,
     rawLoader,
     urlLoader,
+    fileLoader,
     fontLoader
     // markdownLoader,
     // happypackLoader

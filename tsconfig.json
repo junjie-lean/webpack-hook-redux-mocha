@@ -2,13 +2,14 @@
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
+    "noImplicitAny": false,
     "experimentalDecorators": true,
+    "declaration": false,
     "allowJs": true,
     "checkJs": false,
     "outDir": "./build",
     "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "es2015",
+    "module": "commonjs",
     "target": "es5",
     "moduleResolution": "node",
     "jsx": "react",
@@ -19,5 +20,10 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["./src/**/*"]
+
+  "awesomeTypescriptLoaderOptions": {
+    "ignoreDiagnostics": [1192, 2691, 2339, 2365, 2322, 2779]
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
 }
